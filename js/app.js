@@ -26,8 +26,27 @@ let resetBtn = document.getElementById('reset-btn')
 
 
 /*----------- Event Listeners ----------------*/
-
+document.getElementById('deal-btn').addEventListener('click', init)
 
 
 /*-------------- Functions -------------------*/
+
+// init function to start the game
+function init() {
+  // randomly select 26 random index numbers from main deck
+  // push 26 cards in each of the decks
+  while (mainDeck.length > 0) {
+    let randIdx = Math.floor(Math.random() * mainDeck.length)
+    let randIdx2 = Math.floor(Math.random * mainDeck.length)
+    let cardPicked = mainDeck.splice(randIdx, 1)[0]
+    deck1.push(cardPicked)
+    let cardPicked2 = mainDeck.splice(randIdx2, 1)[0]
+    deck2.push(cardPicked2)
+
+    console.log(deck1);
+    console.log(deck2);
+  }
+  console.log(mainDeck);
+}
+
 

@@ -1,0 +1,7 @@
+.card {
+  border: 1px solid black;
+}
+
+.card.war {
+  border: 1px solid red;
+}
