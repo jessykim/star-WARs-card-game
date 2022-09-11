@@ -37,16 +37,20 @@ function init() {
   // push 26 cards in each of the decks
   while (mainDeck.length > 0) {
     let randIdx = Math.floor(Math.random() * mainDeck.length)
-    let randIdx2 = Math.floor(Math.random * mainDeck.length)
     let cardPicked = mainDeck.splice(randIdx, 1)[0]
     deck1.push(cardPicked)
+    deck1El.classList.add('back')
+
+    let randIdx2 = Math.floor(Math.random() * mainDeck.length)
     let cardPicked2 = mainDeck.splice(randIdx2, 1)[0]
     deck2.push(cardPicked2)
-
-    console.log(deck1);
-    console.log(deck2);
+    deck2El.classList.add('back')
   }
-  console.log(mainDeck);
+  console.log(deck2);
+
+  // add first card in deck2 on deckDisplay2
+  let drawnCard = deck2[0]
+  deck2DisplayEl.classList.add(drawnCard)
+  // remove drawn card from deck2
+  deck2.shift()
 }
-
-
