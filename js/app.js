@@ -27,6 +27,7 @@ let resetBtn = document.getElementById('reset-btn')
 
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
+document.getElementById('deck-1').addEventListener('click', handleClick)
 
 
 /*-------------- Functions -------------------*/
@@ -46,11 +47,28 @@ function init() {
     deck2.push(cardPicked2)
     deck2El.classList.add('back')
   }
-  console.log(deck2);
+  computerDraw()
+}
 
+function computerDraw() {
   // add first card in deck2 on deckDisplay2
   let drawnCard = deck2[0]
+  deckDisplay2.push(drawnCard)
   deck2DisplayEl.classList.add(drawnCard)
   // remove drawn card from deck2
   deck2.shift()
+}
+
+// create a function that draws the first card out of deck1 when the user clicks on deck1
+function handleClick() {
+  // if deckDisplay2 has at least a card drawn, then allow user to click on deck1 to draw 1 card to the center
+  if (deckDisplay2.length !== 0) {
+    let drawnCard = deck1[0]
+    deckDisplay1.push(drawnCard)
+    deck1DisplayEl.classList.add(drawnCard)
+    deck1.shift()
+    console.log(drawnCard);
+    console.log(deckDisplay1);
+  }
+  console.log(deck1);
 }
