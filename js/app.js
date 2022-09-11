@@ -77,15 +77,29 @@ function handleClick() {
 
 // create a function that compares the value of each drawn card
 // the highest card wins; both cards are added to the winning deck
-// if both card values are equal; render WAR
+// if both card values are equal; call WAR function
 function compareDraw(arr1, arr2) {
   // change class name so that the value of the card is a number (i.e. d06 -> 6)
   // if the value includes A = 14, K = 13, Q = 12, J = 11
-
   let cardVal1 = parseInt(deckDisplay1[0].toString().replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
-  console.log(cardVal1);
 
   let cardVal2 = parseInt(deckDisplay2[0].toString().replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
-  console.log(cardVal2);
+
+  if (cardVal1 === cardVal2) {
+    war()
+  } else if (cardVal1 > cardVal2) {
+    // if user card is higher than comp card; push both cards to deck1
+    deck1.push(deckDisplay1[0])
+    deck1.push(deckDisplay2[0])
+  } else {
+    // if comp card is higher; push both cards to deck2
+    deck2.push(deckDisplay1[0])
+    deck2.push(deckDisplay2[0])
+  }
+  console.log(deck1);
+  console.log(deck2);
+}
+
+function war() {
 
 }
