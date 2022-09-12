@@ -9,6 +9,7 @@ let warDeck1 = []
 let warDeck2 = []
 let deckDisplay1 = []
 let deckDisplay2 = []
+// let card1, card2
 
 
 /*---------- Cached Element References -------*/
@@ -26,6 +27,7 @@ let resetBtn = document.getElementById('reset-btn')
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
 document.getElementById('deck-1').addEventListener('click', handleClick)
+// document.getElementById('click-continue').addEventListener('click', returnCards)
 
 
 /*-------------- Functions -------------------*/
@@ -63,12 +65,14 @@ function computerDraw() {
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1) {
+  if (deckDisplay2.length === 1 && warDeck1.length === 0) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
     deck1.shift()
     render()
+  } else if (deckDisplay2.length === 1 && warDeck1.length > 0) {
+    renderWar()
   } else {
   }
 }
@@ -104,23 +108,22 @@ function render() {
   if (deck1.length === 52 || deck2.length === 52) {
     winner()
   } else {
-    returnCards()
   }
-  
-  console.log(deck1);
-  console.log(deck2);
+  returnCards()
 }
 
 // create a separate returnCards function
 function returnCards() {
-  deck1DisplayEl.classList.remove(deckDisplay1[0].toString())
-  deck2DisplayEl.classList.remove(deckDisplay2[0].toString())
+  deck1DisplayEl.classList.remove(deckDisplay1[0])
+  deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
   warDeck1El.classList.remove('back')
   warDeck2El.classList.remove('back')
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
+  console.log(deck1);
+  console.log(deck2);
   computerDraw()
 }
 
@@ -132,18 +135,52 @@ function war() {
   // draws 3 cards from deck1 and deck2 and pushes to warDeck1 and warDeck2 (front is hidden)
   warDeck1.push(deck1[0], deck1[1], deck1[2])
   warDeck2.push(deck2[0], deck2[1], deck2[2])
+  
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
 
   // removes war cards from deck1 and deck2
   deck1.splice(0, 3)
   deck2.splice(0, 3)
-  
+
   console.log(warDeck1);
   console.log(warDeck2);
   console.log(deck1);
   console.log(deck2);
+
   computerDraw()
+}
+
+function renderWar() {
+  let card1 = deckDisplay1[0].toString()
+  let card2 = deckDisplay2[0].toString()
+  
+  let cardVal1 = parseInt(card1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
+  
+  let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
+  
+  if (cardVal1 > cardVal2) {
+    deck1.push(deckDisplay1[0])
+    deck1.push(deckDisplay2[0])
+    for (let i = 0; i < warDeck1.length; i++) {
+      deck1.push(warDeck1[i])
+    }
+    for (let i = 0; i < warDeck2.length; i++) {
+      deck1.push(warDeck2[i])
+    }
+  }
+  
+  if (cardVal1 < cardVal2) {
+    deck2.push(deckDisplay1[0])
+    deck2.push(deckDisplay2[0])
+    for (let i = 0; i < warDeck1.length; i++) {
+      deck2.push(warDeck1[i])
+    }
+    for (let i = 0; i < warDeck2.length; i++) {
+      deck2.push(warDeck2[i])
+    }
+  }
+  returnCards()
 }
 
 // create winner function
