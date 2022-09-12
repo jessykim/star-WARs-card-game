@@ -122,6 +122,8 @@ function compareDraw(arr1, arr2) {
     deck2DisplayEl.classList.remove(card2)
     deckDisplay1.pop()
     deckDisplay2.pop()
+    warDeck1El.classList.remove('back')
+    warDeck2El.classList.remove('back')
     computerDraw()
   }
   console.log(deck1);
