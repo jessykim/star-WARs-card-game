@@ -97,10 +97,22 @@ function compareDraw(arr1, arr2) {
     // if user card is higher than comp card; push both cards to deck1
     deck1.push(deckDisplay1[0])
     deck1.push(deckDisplay2[0])
+    warDeck1.forEach(function(card) {
+      deck1.push(card)
+    })
+    warDeck2.forEach(function(card) {
+      deck1.push(card)
+    })
   } else {
     // if comp card is higher; push both cards to deck2
     deck2.push(deckDisplay1[0])
     deck2.push(deckDisplay2[0])
+    warDeck1.forEach(function(card) {
+      deck2.push(card)
+    })
+    warDeck2.forEach(function(card) {
+      deck2.push(card)
+    })
   }
   
   if (deckDisplay1.length !== 0) {
@@ -115,20 +127,20 @@ function compareDraw(arr1, arr2) {
 }
 
 // create a war function
-// draws 3 cards from deck1 and deck2 and pushes to warDeck1 and warDeck2 (front is hidden)
 // comp draws 1 card (face up) to deckDisplay2
 // user clicks on deck1 to draw 1 card to deckDisplay1
 // call compareDraw function
 function war() {
+  // draws 3 cards from deck1 and deck2 and pushes to warDeck1 and warDeck2 (front is hidden)
   warDeck1.push(deck1[0], deck1[1], deck1[2])
   warDeck2.push(deck2[0], deck2[1], deck2[2])
-
-  deck1.splice(0, 3)
-  deck2.splice(0,3)
-  
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
 
+  // removes war cards from deck1 and deck2
+  deck1.splice(0, 3)
+  deck2.splice(0, 3)
+  
   console.log(warDeck1);
   console.log(warDeck2);
   console.log(deck1);
