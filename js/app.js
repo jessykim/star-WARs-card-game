@@ -9,8 +9,6 @@ let warDeck1 = []
 let warDeck2 = []
 let deckDisplay1 = []
 let deckDisplay2 = []
-let winner
-let cardToRemove
 
 
 /*---------- Cached Element References -------*/
@@ -114,6 +112,10 @@ function compareDraw(arr1, arr2) {
       deck2.push(card)
     })
   }
+
+  if (deck1.length === 52 || deck2.length === 52) {
+    winner()
+  }
   
   if (deckDisplay1.length !== 0) {
     deck1DisplayEl.classList.remove(card1)
@@ -146,4 +148,15 @@ function war() {
   console.log(deck1);
   console.log(deck2);
   computerDraw()
+}
+
+// create winner function
+// call function when deck1 or deck2 has 52 cards
+// message congratulates winner
+function winner() {
+  if (deck1.length === 52) {
+    messageEl.textContent = 'Congratulations! Yo-da winna!'
+  } else {
+    messageEl.textContent = 'Better luck next time! Click reset for a rematch!'
+  }
 }
