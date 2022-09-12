@@ -122,7 +122,13 @@ function compareDraw(arr1, arr2) {
 function war() {
   warDeck1.push(deck1[0], deck1[1], deck1[2])
   warDeck2.push(deck2[0], deck2[1], deck2[2])
+  
+  warDeck1El.classList.add('back')
+  warDeck2El.classList.add('back')
+
   console.log(warDeck1);
   console.log(warDeck2);
+  console.log(deck1);
+  console.log(deck2);
   computerDraw()
 }
