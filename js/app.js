@@ -1,5 +1,7 @@
 /*-------------- Constants -------------------*/
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+
+const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s10"]
 
 
 /*--------------- Variables ------------------*/
@@ -9,7 +11,7 @@ let warDeck1 = []
 let warDeck2 = []
 let deckDisplay1 = []
 let deckDisplay2 = []
-// let card1, card2
+let card1, card2
 
 
 /*---------- Cached Element References -------*/
@@ -52,14 +54,14 @@ function init() {
 
 function computerDraw() {
   // add first card in deck2 on deckDisplay2
-  if (deckDisplay2.length === 0) {
+  // if (deckDisplay2.length === 0) {
     let drawnCard = deck2[0]
     deckDisplay2.push(drawnCard)
     deck2DisplayEl.classList.add(drawnCard)
     // remove drawn card from deck2
     deck2.shift()
-  } else {
-  }
+  // } else {
+  // }
 }
 
 // create a function that draws the first card out of deck1 when the user clicks on deck1
@@ -90,8 +92,8 @@ function render() {
 
   let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
 
-  console.log(card1);
-  console.log(card2);
+  console.log(card1, 'user card');
+  console.log(card2, 'comp card');
 
   if (cardVal1 === cardVal2) {
     war()
@@ -109,7 +111,7 @@ function render() {
     winner()
   } else {
   }
-  returnCards()
+  setTimeout(() => returnCards(), 3000)
 }
 
 // create a separate returnCards function
@@ -124,7 +126,7 @@ function returnCards() {
   warDeck2.splice(0,3)
   console.log(deck1);
   console.log(deck2);
-  computerDraw()
+  setTimeout(() => computerDraw(), 3000)
 }
 
 // create a war function
@@ -147,11 +149,11 @@ function war() {
   console.log(warDeck2);
   console.log(deck1);
   console.log(deck2);
-
-  computerDraw()
 }
 
 function renderWar() {
+  // setTimeout(() => computerDraw(), 3000)
+
   let card1 = deckDisplay1[0].toString()
   let card2 = deckDisplay2[0].toString()
   
