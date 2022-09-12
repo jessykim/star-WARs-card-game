@@ -122,6 +122,9 @@ function compareDraw(arr1, arr2) {
 function war() {
   warDeck1.push(deck1[0], deck1[1], deck1[2])
   warDeck2.push(deck2[0], deck2[1], deck2[2])
+
+  deck1.splice(0, 3)
+  deck2.splice(0,3)
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
