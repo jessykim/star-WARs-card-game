@@ -54,6 +54,10 @@ function init() {
     deck2.push(cardPicked2)
     deck2El.classList.add('back')
   }
+
+  dealBtn.setAttribute('hidden', true)
+  resetBtn.removeAttribute('hidden')
+
   console.log(deck1);
   console.log(deck2);
   computerDraw()
@@ -66,7 +70,7 @@ function computerDraw() {
     deck2El.classList.add('back')
   }
   // add first card in deck2 on deckDisplay2
-  if (deckDisplay2.length === 0 && deck1.length !== 0) {
+  if (deckDisplay2.length === 0 && deck1.length > 0) {
     let drawnCard = deck2[0]
     deckDisplay2.push(drawnCard)
     deck2DisplayEl.classList.add(drawnCard)
@@ -83,7 +87,7 @@ function handleClick() {
     deck1El.classList.add('back')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1 && deck2.length !== 0) {
+  if (deckDisplay2.length === 1) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
@@ -375,13 +379,17 @@ function checkWinner() {
   if (deck2.length === 0 && deck1.length > 0) {
     messageEl.textContent = "Congratulations! Yo-da winna!"
     deck2El.classList.remove('back')
+    resetBtn.removeAttribute('hidden')
+
   } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
     deck1El.classList.remove('back')
+    resetBtn.removeAttribute('hidden')
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     deck1El.classList.remove('back')
     deck2El.classList.remove('back')
+    resetBtn.removeAttribute('hidden')
   } else {
   }
 }
@@ -390,13 +398,13 @@ function checkWinner() {
 // remove all the card displays on each card div
 // remove all elements from following arrays: deck1, deck2, deckDisplay1 and deckDisplay2
 function reset() {
+  dealBtn.removeAttribute('hidden')
+  resetBtn.setAttribute('hidden', true)
   deck1El.classList.remove('back')
   deck2El.classList.remove('back')
   deck1DisplayEl.classList.remove(deckDisplay1[0])
   deck2DisplayEl.classList.remove(deckDisplay2[0])
-  deckDisplay1 = []
-  deckDisplay2 = []
-  messageEl.textContent = ""
+  messageEl.textContent = "Click deal to start!"
   for (let i = 0; i < deck1.length; i++) {
     mainDeck.push(deck1[i])
   }
@@ -405,4 +413,12 @@ function reset() {
   }
   deck1 = []
   deck2 = []
+  for (let i = 0; i < deckDisplay1.length; i++) {
+    mainDeck.push(deckDisplay1[i])
+  }
+  for (let i = 0; i < deckDisplay2.length; i++) {
+    mainDeck.push(deckDisplay2[i])
+  }
+  deckDisplay1 = []
+  deckDisplay2 = []
 }
