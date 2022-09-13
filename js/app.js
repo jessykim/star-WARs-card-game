@@ -1,10 +1,10 @@
 /*-------------- Constants -------------------*/
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 
 // for testing
-// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02", "h04"]
+const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
 
 /*--------------- Variables ------------------*/
@@ -52,19 +52,32 @@ function init() {
     deck2.push(cardPicked2)
     deck2El.classList.add('back')
   }
+  console.log(deck1);
+  console.log(deck2);
   computerDraw()
 }
 
 function computerDraw() {
+  // if (deck2.length === 1) {
+  //   deck2El.classList.remove('back')
+  // } else {
+  // }
   // add first card in deck2 on deckDisplay2
-  let drawnCard = deck2[0]
-  deckDisplay2.push(drawnCard)
-  deck2DisplayEl.classList.add(drawnCard)
-  deck2.shift()
+  if (deckDisplay2.length === 0) {
+    let drawnCard = deck2[0]
+    deckDisplay2.push(drawnCard)
+    deck2DisplayEl.classList.add(drawnCard)
+    deck2.shift()
+  } else {
+  }
 }
 
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
+  // if (deck1.length === 1) {
+  //   deck1El.classList.remove('back')
+  // } else {
+  // }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
   if (deckDisplay2.length === 1) {
     let drawnCard = deck1[0]
@@ -82,16 +95,19 @@ function handleClick() {
 function render() {
   // change class name so that the value of the card is a number (i.e. d06 -> 6)
   // if the value includes A = 14, K = 13, Q = 12, J = 11
-  let card1 = deckDisplay1[0].toString()
-  let card2 = deckDisplay2[0].toString()
+  let card1 = deckDisplay1[0]
+  let card2 = deckDisplay2[0]
 
   let cardVal1 = parseInt(card1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
 
   let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
 
+  console.log(card1);
+  console.log(card2);
+
   if (cardVal1 === cardVal2) {
     setTimeout(() => war(), 2000)
-    checkWinner()
+    // checkWinner()
   } else if (cardVal1 > cardVal2) {
     // if user card is higher than comp card; push both cards to deck1
     deck1.push(deckDisplay1[0])
@@ -105,6 +121,8 @@ function render() {
     setTimeout(() => returnCards(), 2000)
     checkWinner()
   }
+  console.log(deck1);
+  console.log(deck2);
 }
 
 // create a separate returnCards function
@@ -126,12 +144,16 @@ function war() {
   deckDisplay1.unshift(drawnCard1)
   deck1DisplayEl.classList.add(drawnCard1, 'back')
   deck1.shift()
+  console.log(drawnCard1);
+  console.log(deckDisplay1);
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
   deckDisplay2.unshift(drawnCard2)
   deck2DisplayEl.classList.add(drawnCard2, 'back')
   deck2.shift()
+  console.log(drawnCard2);
+  console.log(deckDisplay2);
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
   for (let i = 0; i < 3; i++) {
@@ -146,6 +168,11 @@ function war() {
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
+
+  console.log(deck1);
+  console.log(deck2);
+  console.log(warDeck1);
+  console.log(warDeck2);
 }
 
 // create renderWar function that happens when user clicks on the drawn card
@@ -156,8 +183,8 @@ function renderWar() {
   deck1DisplayEl.classList.remove('back')
   deck2DisplayEl.classList.remove('back')
 
-  let warCard1 = deckDisplay1[0].toString()
-  let warCard2 = deckDisplay2[0].toString()
+  let warCard1 = deckDisplay1[0]
+  let warCard2 = deckDisplay2[0]
   
   let warCardVal1 = parseInt(warCard1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
   
@@ -170,6 +197,9 @@ function renderWar() {
   } else if (warCardVal1 < warCardVal2) {
     deck2WarWinner()
   } 
+
+  console.log(deck1);
+  console.log(deck2);
 }
 
 // create a function for doubleWar
@@ -266,7 +296,7 @@ function checkWinner() {
   } else if (deck1.length === 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
     deck1El.classList.remove('back')
-  } else if (deck1.length === deck2.length) {
+  } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     deck1El.classList.remove('back')
     deck2El.classList.remove('back')
@@ -275,4 +305,15 @@ function checkWinner() {
 }
 
 // create reset function
-// 
+// remove all the card displays on each card div
+// remove all elements from following arrays: deck1, deck2, deckDisplay1 and deckDisplay2
+function reset() {
+  deck1El.classList.remove('back')
+  deck2El.classList.remove('back')
+  deck1DisplayEl.classList.remove(deckDisplay1[0])
+  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deck1 = []
+  deck2 = []
+  deckDisplay1 = []
+  deckDisplay2 = []
+}
