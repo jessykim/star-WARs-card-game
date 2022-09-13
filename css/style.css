@@ -6,14 +6,25 @@ body {
 }
 
 h1 {
-  font-size: 12px;
+  font-size: 15px;
+  padding: 10px;
 }
 
 .center-deal {
   display: inline-flex;
   grid-column: 2 / 3;
+  justify-self: center;
 }
 
 .user {
   grid-column: 1 / 2;
+}
+
+.war-deck {
+  justify-content: center;
+  place-self: center;
+}
+
+.message > p {
+  font-size: 10px;
 }
