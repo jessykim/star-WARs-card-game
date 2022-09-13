@@ -360,4 +360,10 @@ function reset() {
   deckDisplay1 = []
   deckDisplay2 = []
   messageEl.textContent = ""
+  for (let i = 0; i < deck1.length; i++) {
+    mainDeck.push(deck1[i])
+  }
+  for (let i = 0; i < deck2.length; i++) {
+    mainDeck.push(deck2[i])
+  }
 }
