@@ -246,12 +246,26 @@ function doubleWar() {
   }
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
-  for (let i = 0; i < 3; i++) {
-    warDeck1.push(deck1[i])
+  if (deck1.length >= 3) {
+    for (let i = 0; i < 3; i++) {
+      warDeck1.push(deck1[i])
+    }
+  } else {
+    for (let i = 0; i < deck1.length; i++) {
+      warDeck1.push(deck1[i])
+    }
   }
-  for (let i = 0; i < 3; i++) {
-    warDeck2.push(deck2[i])
+
+  if (deck2.length >= 3) {
+    for (let i = 0; i < 3; i++) {
+      warDeck2.push(deck2[i])
+    }
+  } else {
+    for (let i = 0; i < deck2.length; i++) {
+      warDeck2.push(deck2[i])
+    }
   }
+  
   // removes war cards from deck1 and deck2
   deck1.splice(0, 3)
   deck2.splice(0, 3)
@@ -278,13 +292,11 @@ function deck1WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
-  deck1.filter(card => card !== 'undefined')
-  deck2.filter(card => card !== 'undefined')
-
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
   } else {
     setTimeout(() => returnCards(), 2000)
+    setTimeout(() => computerDraw(), 2000)
   }
 }
 
@@ -307,13 +319,11 @@ function deck2WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
-  deck1.filter(card => card !== 'undefined')
-  deck2.filter(card => card !== 'undefined')
-
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
   } else {
     setTimeout(() => returnCards(), 2000)
+    setTimeout(() => computerDraw(), 2000)
   }
 }
 
