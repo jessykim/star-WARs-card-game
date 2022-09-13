@@ -4,7 +4,9 @@
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 
 // for testing
-const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
+// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
+
+const mainDeck = ["dA","cA","d10","c10","s07","s02"]
 
 
 /*--------------- Variables ------------------*/
@@ -58,9 +60,10 @@ function init() {
 }
 
 function computerDraw() {
-  if (deck2.length === 1) {
+  if (deck2.length < 2) {
     deck2El.classList.remove('back')
   } else {
+    deck2El.classList.add('back')
   }
   // add first card in deck2 on deckDisplay2
   if (deckDisplay2.length === 0) {
@@ -74,9 +77,10 @@ function computerDraw() {
 
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
-  if (deck1.length === 1) {
+  if (deck1.length < 2) {
     deck1El.classList.remove('back')
   } else {
+    deck1El.classList.add('back')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
   if (deckDisplay2.length === 1) {
@@ -179,11 +183,19 @@ function war() {
     }
   }
   // removes war cards from deck1 and deck2
-  deck1.splice(0, 3)
-  deck2.splice(0, 3)
+  // don't include back display if no cards in warDecks
+  if (warDeck1.length > 0) {
+    deck1.splice(0, 3)
+    warDeck1El.classList.add('back')
+  } else {
+  }
   
-  warDeck1El.classList.add('back')
-  warDeck2El.classList.add('back')
+  if (warDeck2.length > 0) {
+    deck2.splice(0, 3)
+    warDeck2El.classList.add('back')
+  } else {
+
+  }
 
   console.log(deck1);
   console.log(deck2);
@@ -210,7 +222,7 @@ function renderWar() {
     if (deck1.length === 0 || deck2.length === 0) {
       checkWinner()
     } else {
-      setTimeout(() => doublWar(), 2000)
+      setTimeout(() => doubleWar(), 2000)
     }
   } else if (warCardVal1 > warCardVal2) {
     deck1WarWinner()
