@@ -1,9 +1,9 @@
 /*-------------- Constants -------------------*/
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 
-// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10"]
+const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02", "h04"]
 
 
 /*--------------- Variables ------------------*/
@@ -13,7 +13,6 @@ let warDeck1 = []
 let warDeck2 = []
 let deckDisplay1 = []
 let deckDisplay2 = []
-let card1, card2
 
 
 /*---------- Cached Element References -------*/
@@ -128,8 +127,6 @@ function returnCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
   console.log(deck1);
@@ -145,7 +142,7 @@ function war() {
   deck1DisplayEl.classList.add(drawnCard1, 'back')
   deck1.shift()
   console.log(drawnCard1);
-
+  
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
   deckDisplay2.push(drawnCard2)
@@ -160,14 +157,13 @@ function war() {
   for (let i = 0; i < 3; i++) {
     warDeck2.push(deck2[i])
   }
-  
-  warDeck1El.classList.add('back')
-  warDeck2El.classList.add('back')
-
   // removes war cards from deck1 and deck2
   deck1.splice(0, 3)
   deck2.splice(0, 3)
-
+  
+  warDeck1El.classList.add('back')
+  warDeck2El.classList.add('back')
+  
   console.log(warDeck1);
   console.log(warDeck2);
   console.log(deck1);
@@ -175,12 +171,13 @@ function war() {
 }
 
 // create renderWar function that happens when user clicks on the drawn card
-// flip the two center drawn cards
 // compare card values
 // push center cards and cards in warDeck1 and warDeck2 into winning deck
 function renderWar() {
-
-
+  // flip the two center drawn cards
+  deck1DisplayEl.classList.remove('back')
+  deck2DisplayEl.classList.remove('back')
+  
   let card1 = deckDisplay1[0].toString()
   let card2 = deckDisplay2[0].toString()
   
@@ -189,27 +186,50 @@ function renderWar() {
   let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
   
   if (cardVal1 > cardVal2) {
-    deck1.push(deckDisplay1[0])
-    deck1.push(deckDisplay2[0])
-    for (let i = 0; i < warDeck1.length; i++) {
-      deck1.push(warDeck1[i])
-    }
-    for (let i = 0; i < warDeck2.length; i++) {
-      deck1.push(warDeck2[i])
-    }
+    deck1WarWinner()
+  } else {
+    deck2WarWinner()
   }
-  
-  if (cardVal1 < cardVal2) {
-    deck2.push(deckDisplay1[0])
-    deck2.push(deckDisplay2[0])
-    for (let i = 0; i < warDeck1.length; i++) {
-      deck2.push(warDeck1[i])
-    }
-    for (let i = 0; i < warDeck2.length; i++) {
-      deck2.push(warDeck2[i])
-    }
+}
+
+function deck1WarWinner() {
+  deck1.push(deckDisplay1[0])
+  deck1.push(deckDisplay2[0])
+  for (let i = 0; i < warDeck1.length; i++) {
+    deck1.push(warDeck1[i])
   }
-  returnCards()
+  for (let i = 0; i < warDeck2.length; i++) {
+    deck1.push(warDeck2[i])
+  }
+  warDeck1El.classList.remove('back')
+  warDeck2El.classList.remove('back')
+  warDeck1.splice(0,3)
+  warDeck2.splice(0,3)
+
+  console.log(deck1);
+  console.log(deck2);
+  console.log(warDeck1);
+  console.log(warDeck2);
+}
+
+function deck2WarWinner() {
+  deck2.push(deckDisplay1[0])
+  deck2.push(deckDisplay2[0])
+  for (let i = 0; i < warDeck1.length; i++) {
+    deck2.push(warDeck1[i])
+  }
+  for (let i = 0; i < warDeck2.length; i++) {
+    deck2.push(warDeck2[i])
+  }
+  warDeck1El.classList.remove('back')
+  warDeck2El.classList.remove('back')
+  warDeck1.splice(0,3)
+  warDeck2.splice(0,3)
+
+  console.log(deck1);
+  console.log(deck2);
+  console.log(warDeck1);
+  console.log(warDeck2);
 }
 
 // create winner function
