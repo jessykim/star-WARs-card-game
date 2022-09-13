@@ -6,7 +6,7 @@
 // for testing
 // const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-const mainDeck = ["dA","cA","d10","c10","s07","s02"]
+const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -66,7 +66,7 @@ function computerDraw() {
     deck2El.classList.add('back')
   }
   // add first card in deck2 on deckDisplay2
-  if (deckDisplay2.length === 0) {
+  if (deckDisplay2.length === 0 && deck1.length !== 0) {
     let drawnCard = deck2[0]
     deckDisplay2.push(drawnCard)
     deck2DisplayEl.classList.add(drawnCard)
@@ -83,7 +83,7 @@ function handleClick() {
     deck1El.classList.add('back')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1) {
+  if (deckDisplay2.length === 1 && deck2.length !== 0) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
@@ -128,6 +128,19 @@ function render() {
     setTimeout(() => returnCards(), 2000)
     checkWinner()
   }
+
+  if (deck1.length === 0) {
+    deck1El.classList.remove('back')
+  } else {
+    deck1El.classList.add('back')
+  }
+
+  if (deck2.length === 0) {
+    deck2El.classList.remove('back')
+  } else {
+    deck2El.classList.add('back')
+  }
+
   console.log(deck1);
   console.log(deck2);
 }
@@ -153,6 +166,12 @@ function war() {
   deck1.shift()
   console.log(drawnCard1);
   console.log(deckDisplay1);
+
+  if (deck1.length === 0) {
+    deck1El.classList.remove('back')
+  } else {
+    deck1El.classList.add('back')
+  }
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
@@ -161,6 +180,12 @@ function war() {
   deck2.shift()
   console.log(drawnCard2);
   console.log(deckDisplay2);
+
+  if (deck2.length === 0) {
+    deck2El.classList.remove('back')
+  } else {
+    deck2El.classList.add('back')
+  }
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
   if (deck1.length >= 3) {
@@ -347,10 +372,12 @@ function deck2WarWinner() {
 // call function when deck1 or deck2 has 52 cards
 // message congratulates winner
 function checkWinner() {
-  if (deck2.length === 0) {
+  if (deck2.length === 0 && deck1.length > 0) {
     messageEl.textContent = "Congratulations! Yo-da winna!"
-  } else if (deck1.length === 0) {
+    deck2El.classList.remove('back')
+  } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
+    deck1El.classList.remove('back')
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     deck1El.classList.remove('back')
@@ -367,8 +394,6 @@ function reset() {
   deck2El.classList.remove('back')
   deck1DisplayEl.classList.remove(deckDisplay1[0])
   deck2DisplayEl.classList.remove(deckDisplay2[0])
-  deck1 = []
-  deck2 = []
   deckDisplay1 = []
   deckDisplay2 = []
   messageEl.textContent = ""
@@ -378,4 +403,6 @@ function reset() {
   for (let i = 0; i < deck2.length; i++) {
     mainDeck.push(deck2[i])
   }
+  deck1 = []
+  deck2 = []
 }
