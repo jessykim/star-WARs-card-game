@@ -102,22 +102,20 @@ function render() {
   console.log(deck2);
 
   if (cardVal1 === cardVal2) {
-    war()
+    setTimeout(() => war(), 2000)
+    checkWinner()
   } else if (cardVal1 > cardVal2) {
     // if user card is higher than comp card; push both cards to deck1
     deck1.push(deckDisplay1[0])
     deck1.push(deckDisplay2[0])
-    setTimeout(() => returnCards(), 3000)
+    setTimeout(() => returnCards(), 2000)
+    checkWinner()
   } else {
     // if comp card is higher; push both cards to deck2
     deck2.push(deckDisplay1[0])
     deck2.push(deckDisplay2[0])
-    setTimeout(() => returnCards(), 3000)
-  }
-
-  if (deck1.length === 52 || deck2.length === 52) {
-    winner()
-  } else {
+    setTimeout(() => returnCards(), 2000)
+    checkWinner()
   }
 }
 
@@ -127,25 +125,26 @@ function returnCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
-  warDeck1.splice(0,3)
-  warDeck2.splice(0,3)
   console.log(deck1);
   console.log(deck2);
-  setTimeout(() => computerDraw(), 3000)
+  setTimeout(() => computerDraw(), 2000)
 }
 
 // create a war function
 function war() { 
+  deck1DisplayEl.classList.remove(deckDisplay1[0])
+  deck2DisplayEl.classList.remove(deckDisplay2[0])
+
   // user draws 1 card (face down) to deckDisplay1
   let drawnCard1 = deck1[0]
-  deckDisplay1.push(drawnCard1)
+  deckDisplay1.unshift(drawnCard1)
   deck1DisplayEl.classList.add(drawnCard1, 'back')
   deck1.shift()
   console.log(drawnCard1);
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
-  deckDisplay2.push(drawnCard2)
+  deckDisplay2.unshift(drawnCard2)
   deck2DisplayEl.classList.add(drawnCard2, 'back')
   deck2.shift()
   console.log(drawnCard2);
@@ -163,7 +162,7 @@ function war() {
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
-  
+
   console.log(warDeck1);
   console.log(warDeck2);
   console.log(deck1);
@@ -177,24 +176,75 @@ function renderWar() {
   // flip the two center drawn cards
   deck1DisplayEl.classList.remove('back')
   deck2DisplayEl.classList.remove('back')
+
+  let warCard1 = deckDisplay1[0].toString()
+  let warCard2 = deckDisplay2[0].toString()
   
-  let card1 = deckDisplay1[0].toString()
-  let card2 = deckDisplay2[0].toString()
+  let warCardVal1 = parseInt(warCard1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
   
-  let cardVal1 = parseInt(card1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
+  let warCardVal2 = parseInt(warCard2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
   
-  let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
-  
-  if (cardVal1 > cardVal2) {
+  if (warCardVal1 === warCardVal2) {
+    doubleWar()
+  } else if (warCardVal1 > warCardVal2) {
     deck1WarWinner()
-  } else {
+  } else if (warCardVal1 < warCardVal2) {
     deck2WarWinner()
+  } 
+}
+
+// create a function for doubleWar
+function doubleWar() {
+  // user draws 1 card (face down) to deckDisplay1
+  let drawnCard1 = deck1[0]
+  if (drawnCard1 === 'undefined') {
+    checkWinner()
+  } else {
+    deckDisplay1.unshift(drawnCard1)
+    deck1DisplayEl.classList.add(drawnCard1, 'back')
+    deck1.shift()
+    console.log(drawnCard1);
   }
+  
+  // comp draws 1 card (face down) to deckDisplay2
+  let drawnCard2 = deck2[0]
+  if (drawnCard2 === 'undefined') {
+    checkWinner()
+  } else {
+    deckDisplay2.unshift(drawnCard2)
+    deck2DisplayEl.classList.add(drawnCard2, 'back')
+    deck2.shift()
+    console.log(drawnCard2);
+  }
+  
+  // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
+  for (let i = 0; i < 3; i++) {
+    warDeck1.push(deck1[i])
+  }
+  for (let i = 0; i < 3; i++) {
+    warDeck2.push(deck2[i])
+  }
+  // removes war cards from deck1 and deck2
+  deck1.splice(0, 3)
+  deck2.splice(0, 3)
+  
+  warDeck1El.classList.add('back')
+  warDeck2El.classList.add('back')
+
+  console.log(warDeck1);
+  console.log(warDeck2);
+  console.log(deck1);
+  console.log(deck2);
 }
 
 function deck1WarWinner() {
-  deck1.push(deckDisplay1[0])
-  deck1.push(deckDisplay2[0])
+  for (let i = 0; i < deckDisplay1.length; i++) {
+    deck1.push(deckDisplay1[i])
+  }
+  for (let i = 0; i < deckDisplay2.length; i++) {
+    deck1.push(deckDisplay2[i])
+  }
+
   for (let i = 0; i < warDeck1.length; i++) {
     deck1.push(warDeck1[i])
   }
@@ -206,6 +256,8 @@ function deck1WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
+  checkWinner()
+
   console.log(deck1);
   console.log(deck2);
   console.log(warDeck1);
@@ -213,8 +265,13 @@ function deck1WarWinner() {
 }
 
 function deck2WarWinner() {
-  deck2.push(deckDisplay1[0])
-  deck2.push(deckDisplay2[0])
+  for (let i = 0; i < deckDisplay1.length; i++) {
+    deck2.push(deckDisplay1[i])
+  }
+  for (let i = 0; i < deckDisplay2.length; i++) {
+    deck2.push(deckDisplay2[i])
+  }
+  
   for (let i = 0; i < warDeck1.length; i++) {
     deck2.push(warDeck1[i])
   }
@@ -226,6 +283,8 @@ function deck2WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
+  checkWinner()
+
   console.log(deck1);
   console.log(deck2);
   console.log(warDeck1);
@@ -235,10 +294,16 @@ function deck2WarWinner() {
 // create winner function
 // call function when deck1 or deck2 has 52 cards
 // message congratulates winner
-function winner() {
-  if (deck1.length === 52) {
-    messageEl.textContent = 'Congratulations! Yo-da winna!'
+function checkWinner() {
+  deck1.filter(card => card !== 'undefined')
+  deck2.filter(card => card !== 'undefined')
+  
+  if (deck2.length === 0) {
+    messageEl.textContent = "Congratulations! Yo-da winna!"
+  } else if (deck1.length === 0) {
+    messageEl.textContent = "Better luck next time! Click reset for a rematch!"
+  } else if (deck1.length === deck2.length) {
+    messageEl.textContent = "It's a tie! Click reset for a rematch!"
   } else {
-    messageEl.textContent = 'Better luck next time! Click reset for a rematch!'
   }
 }
