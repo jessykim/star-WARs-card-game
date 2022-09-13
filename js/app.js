@@ -32,6 +32,7 @@ let resetBtn = document.getElementById('reset-btn')
 document.getElementById('deal-btn').addEventListener('click', init)
 document.getElementById('deck-1').addEventListener('click', handleClick)
 document.getElementById('deck-1-display').addEventListener('click', renderWar)
+document.getElementById('reset-btn').addEventListener('click', reset)
 
 
 /*-------------- Functions -------------------*/
@@ -261,10 +262,17 @@ function checkWinner() {
   
   if (deck2.length === 0) {
     messageEl.textContent = "Congratulations! Yo-da winna!"
+    deck2El.classList.remove('back')
   } else if (deck1.length === 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
+    deck1El.classList.remove('back')
   } else if (deck1.length === deck2.length) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
+    deck1El.classList.remove('back')
+    deck2El.classList.remove('back')
   } else {
   }
 }
+
+// create reset function
+// 
