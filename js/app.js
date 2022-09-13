@@ -1,7 +1,9 @@
 /*-------------- Constants -------------------*/
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
-const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s10"]
+const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
+
+// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10"]
 
 
 /*--------------- Variables ------------------*/
@@ -30,6 +32,7 @@ let resetBtn = document.getElementById('reset-btn')
 document.getElementById('deal-btn').addEventListener('click', init)
 document.getElementById('deck-1').addEventListener('click', handleClick)
 // document.getElementById('click-continue').addEventListener('click', returnCards)
+document.getElementById('deck-1-display').addEventListener('click', renderWar)
 
 
 /*-------------- Functions -------------------*/
@@ -54,28 +57,30 @@ function init() {
 
 function computerDraw() {
   // add first card in deck2 on deckDisplay2
-  // if (deckDisplay2.length === 0) {
-    let drawnCard = deck2[0]
-    deckDisplay2.push(drawnCard)
-    deck2DisplayEl.classList.add(drawnCard)
-    // remove drawn card from deck2
-    deck2.shift()
-  // } else {
-  // }
+  let drawnCard = deck2[0]
+  deckDisplay2.push(drawnCard)
+  deck2DisplayEl.classList.add(drawnCard)
+  deck2.shift()
 }
 
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1 && warDeck1.length === 0) {
+  if (deckDisplay2.length === 1) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
     deck1.shift()
     render()
-  } else if (deckDisplay2.length === 1 && warDeck1.length > 0) {
-    renderWar()
-  } else {
+  } 
+  // else if (deckDisplay2.length === 1 && warDeck1.length > 0) {
+  //   let drawnCard = deck1[0]
+  //   deckDisplay1.push(drawnCard)
+  //   deck1DisplayEl.classList.add(drawnCard)
+  //   deck1.shift()
+  //   renderWar()
+  // } 
+  else {
   }
 }
 
@@ -94,6 +99,8 @@ function render() {
 
   console.log(card1, 'user card');
   console.log(card2, 'comp card');
+  console.log(deck1);
+  console.log(deck2);
 
   if (cardVal1 === cardVal2) {
     war()
@@ -101,17 +108,18 @@ function render() {
     // if user card is higher than comp card; push both cards to deck1
     deck1.push(deckDisplay1[0])
     deck1.push(deckDisplay2[0])
+    setTimeout(() => returnCards(), 3000)
   } else {
     // if comp card is higher; push both cards to deck2
     deck2.push(deckDisplay1[0])
     deck2.push(deckDisplay2[0])
+    setTimeout(() => returnCards(), 3000)
   }
 
   if (deck1.length === 52 || deck2.length === 52) {
     winner()
   } else {
   }
-  setTimeout(() => returnCards(), 3000)
 }
 
 // create a separate returnCards function
@@ -130,13 +138,28 @@ function returnCards() {
 }
 
 // create a war function
-// comp draws 1 card (face up) to deckDisplay2
-// user clicks on deck1 to draw 1 card to deckDisplay1
-// call compareDraw function
-function war() {
-  // draws 3 cards from deck1 and deck2 and pushes to warDeck1 and warDeck2 (front is hidden)
-  warDeck1.push(deck1[0], deck1[1], deck1[2])
-  warDeck2.push(deck2[0], deck2[1], deck2[2])
+function war() { 
+  // user draws 1 card (face down) to deckDisplay1
+  let drawnCard1 = deck1[0]
+  deckDisplay1.push(drawnCard1)
+  deck1DisplayEl.classList.add(drawnCard1, 'back')
+  deck1.shift()
+  console.log(drawnCard1);
+
+  // comp draws 1 card (face down) to deckDisplay2
+  let drawnCard2 = deck2[0]
+  deckDisplay2.push(drawnCard2)
+  deck2DisplayEl.classList.add(drawnCard2, 'back')
+  deck2.shift()
+  console.log(drawnCard2);
+  
+  // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
+  for (let i = 0; i < 3; i++) {
+    warDeck1.push(deck1[i])
+  }
+  for (let i = 0; i < 3; i++) {
+    warDeck2.push(deck2[i])
+  }
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
@@ -151,8 +174,12 @@ function war() {
   console.log(deck2);
 }
 
+// create renderWar function that happens when user clicks on the drawn card
+// flip the two center drawn cards
+// compare card values
+// push center cards and cards in warDeck1 and warDeck2 into winning deck
 function renderWar() {
-  // setTimeout(() => computerDraw(), 3000)
+
 
   let card1 = deckDisplay1[0].toString()
   let card2 = deckDisplay2[0].toString()
