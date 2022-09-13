@@ -1,9 +1,10 @@
 /*-------------- Constants -------------------*/
-// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 
-const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02", "h04"]
+// for testing
+// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02", "h04"]
 
 
 /*--------------- Variables ------------------*/
@@ -30,7 +31,6 @@ let resetBtn = document.getElementById('reset-btn')
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
 document.getElementById('deck-1').addEventListener('click', handleClick)
-// document.getElementById('click-continue').addEventListener('click', returnCards)
 document.getElementById('deck-1-display').addEventListener('click', renderWar)
 
 
@@ -71,15 +71,7 @@ function handleClick() {
     deck1DisplayEl.classList.add(drawnCard)
     deck1.shift()
     render()
-  } 
-  // else if (deckDisplay2.length === 1 && warDeck1.length > 0) {
-  //   let drawnCard = deck1[0]
-  //   deckDisplay1.push(drawnCard)
-  //   deck1DisplayEl.classList.add(drawnCard)
-  //   deck1.shift()
-  //   renderWar()
-  // } 
-  else {
+  } else {
   }
 }
 
@@ -95,11 +87,6 @@ function render() {
   let cardVal1 = parseInt(card1.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
 
   let cardVal2 = parseInt(card2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
-
-  console.log(card1, 'user card');
-  console.log(card2, 'comp card');
-  console.log(deck1);
-  console.log(deck2);
 
   if (cardVal1 === cardVal2) {
     setTimeout(() => war(), 2000)
@@ -125,8 +112,6 @@ function returnCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
-  console.log(deck1);
-  console.log(deck2);
   setTimeout(() => computerDraw(), 2000)
 }
 
@@ -140,14 +125,12 @@ function war() {
   deckDisplay1.unshift(drawnCard1)
   deck1DisplayEl.classList.add(drawnCard1, 'back')
   deck1.shift()
-  console.log(drawnCard1);
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
   deckDisplay2.unshift(drawnCard2)
   deck2DisplayEl.classList.add(drawnCard2, 'back')
   deck2.shift()
-  console.log(drawnCard2);
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
   for (let i = 0; i < 3; i++) {
@@ -162,11 +145,6 @@ function war() {
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
-
-  console.log(warDeck1);
-  console.log(warDeck2);
-  console.log(deck1);
-  console.log(deck2);
 }
 
 // create renderWar function that happens when user clicks on the drawn card
@@ -203,7 +181,6 @@ function doubleWar() {
     deckDisplay1.unshift(drawnCard1)
     deck1DisplayEl.classList.add(drawnCard1, 'back')
     deck1.shift()
-    console.log(drawnCard1);
   }
   
   // comp draws 1 card (face down) to deckDisplay2
@@ -214,7 +191,6 @@ function doubleWar() {
     deckDisplay2.unshift(drawnCard2)
     deck2DisplayEl.classList.add(drawnCard2, 'back')
     deck2.shift()
-    console.log(drawnCard2);
   }
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
@@ -230,11 +206,6 @@ function doubleWar() {
   
   warDeck1El.classList.add('back')
   warDeck2El.classList.add('back')
-
-  console.log(warDeck1);
-  console.log(warDeck2);
-  console.log(deck1);
-  console.log(deck2);
 }
 
 function deck1WarWinner() {
@@ -257,11 +228,6 @@ function deck1WarWinner() {
   warDeck2.splice(0,3)
 
   checkWinner()
-
-  console.log(deck1);
-  console.log(deck2);
-  console.log(warDeck1);
-  console.log(warDeck2);
 }
 
 function deck2WarWinner() {
@@ -284,11 +250,6 @@ function deck2WarWinner() {
   warDeck2.splice(0,3)
 
   checkWinner()
-
-  console.log(deck1);
-  console.log(deck2);
-  console.log(warDeck1);
-  console.log(warDeck2);
 }
 
 // create winner function
