@@ -106,8 +106,11 @@ function render() {
   console.log(card2);
 
   if (cardVal1 === cardVal2) {
-    setTimeout(() => war(), 2000)
-    // checkWinner()
+    if (deck1.length === 0 || deck2.length === 0) {
+      checkWinner()
+    } else {
+      setTimeout(() => war(), 2000)
+    }
   } else if (cardVal1 > cardVal2) {
     // if user card is higher than comp card; push both cards to deck1
     deck1.push(deckDisplay1[0])
@@ -156,11 +159,24 @@ function war() {
   console.log(deckDisplay2);
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
-  for (let i = 0; i < 3; i++) {
-    warDeck1.push(deck1[i])
+  if (deck1.length >= 3) {
+    for (let i = 0; i < 3; i++) {
+      warDeck1.push(deck1[i])
+    }
+  } else {
+    for (let i = 0; i < deck1.length; i++) {
+      warDeck1.push(deck1[i])
+    }
   }
-  for (let i = 0; i < 3; i++) {
-    warDeck2.push(deck2[i])
+
+  if (deck2.length >= 3) {
+    for (let i = 0; i < 3; i++) {
+      warDeck2.push(deck2[i])
+    }
+  } else {
+    for (let i = 0; i < deck2.length; i++) {
+      warDeck2.push(deck2[i])
+    }
   }
   // removes war cards from deck1 and deck2
   deck1.splice(0, 3)
@@ -198,12 +214,17 @@ function renderWar() {
     deck2WarWinner()
   } 
 
+  console.log(warCard1);
+  console.log(warCard2);
   console.log(deck1);
   console.log(deck2);
 }
 
 // create a function for doubleWar
 function doubleWar() {
+  deck1DisplayEl.classList.remove(deckDisplay1[0])
+  deck2DisplayEl.classList.remove(deckDisplay2[0])
+
   // user draws 1 card (face down) to deckDisplay1
   let drawnCard1 = deck1[0]
   if (drawnCard1 === 'undefined') {
@@ -235,8 +256,7 @@ function doubleWar() {
   deck1.splice(0, 3)
   deck2.splice(0, 3)
   
-  warDeck1El.classList.add('back')
-  warDeck2El.classList.add('back')
+  setTimeout(() => renderWar(), 3000)
 }
 
 function deck1WarWinner() {
@@ -258,7 +278,14 @@ function deck1WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
-  checkWinner()
+  deck1.filter(card => card !== 'undefined')
+  deck2.filter(card => card !== 'undefined')
+
+  if (deck1.length === 0 || deck2.length === 0) {
+    checkWinner()
+  } else {
+    setTimeout(() => returnCards(), 2000)
+  }
 }
 
 function deck2WarWinner() {
@@ -280,22 +307,24 @@ function deck2WarWinner() {
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
-  checkWinner()
+  deck1.filter(card => card !== 'undefined')
+  deck2.filter(card => card !== 'undefined')
+
+  if (deck1.length === 0 || deck2.length === 0) {
+    checkWinner()
+  } else {
+    setTimeout(() => returnCards(), 2000)
+  }
 }
 
 // create winner function
 // call function when deck1 or deck2 has 52 cards
 // message congratulates winner
 function checkWinner() {
-  deck1.filter(card => card !== 'undefined')
-  deck2.filter(card => card !== 'undefined')
-  
   if (deck2.length === 0) {
     messageEl.textContent = "Congratulations! Yo-da winna!"
-    deck2El.classList.remove('back')
   } else if (deck1.length === 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
-    deck1El.classList.remove('back')
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     deck1El.classList.remove('back')
@@ -316,4 +345,5 @@ function reset() {
   deck2 = []
   deckDisplay1 = []
   deckDisplay2 = []
+  messageEl.textContent = ""
 }
