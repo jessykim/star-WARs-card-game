@@ -4,9 +4,9 @@
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 
 // for testing
-// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
+const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-const mainDeck = ["dA","cA","d10","c10"]
+// const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -87,7 +87,7 @@ function handleClick() {
     deck1El.classList.add('back')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1) {
+  if (deckDisplay2.length === 1 && deckDisplay2.length > 0) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
@@ -380,16 +380,18 @@ function checkWinner() {
     messageEl.textContent = "Congratulations! Yo-da winna!"
     deck2El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
-
+    removeEventListener('click', renderWar)
   } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
     deck1El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
+    removeEventListener('click', renderWar)
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     deck1El.classList.remove('back')
     deck2El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
+    removeEventListener('click', renderWar)
   } else {
   }
 }
@@ -402,6 +404,8 @@ function reset() {
   resetBtn.setAttribute('hidden', true)
   deck1El.classList.remove('back')
   deck2El.classList.remove('back')
+  warDeck1El.classList.remove('back')
+  warDeck2El.classList.remove('back')
   deck1DisplayEl.classList.remove(deckDisplay1[0])
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   messageEl.textContent = "Click deal to start!"
@@ -421,4 +425,12 @@ function reset() {
   }
   deckDisplay1 = []
   deckDisplay2 = []
+  for (let i = 0; i < warDeck1.length; i++) {
+    mainDeck.push(warDeck1[i])
+  }
+  for (let i = 0; i < warDeck2.length; i++) {
+    mainDeck.push(warDeck2[i])
+  }
+  warDeck1 = []
+  warDeck2 = []
 }
