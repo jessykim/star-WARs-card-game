@@ -87,7 +87,7 @@ function handleClick() {
     deck1El.classList.add('back')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
-  if (deckDisplay2.length === 1 && deckDisplay2.length > 0) {
+  if (deckDisplay2.length === 1 && deckDisplay1.length === 0) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
     deck1DisplayEl.classList.add(drawnCard)
