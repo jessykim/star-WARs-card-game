@@ -1,8 +1,15 @@
 body {
+  background-image: url(/images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg);
+  background-repeat: no-repeat ;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   display: grid;
   max-width: 320px;
+  max-height: 400px;
   grid-template-columns: [first] 30% [line2] 40% [line3] 30% [end];
   grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] 35% [last-line];
+  
 }
 
 h1 {
@@ -14,6 +21,10 @@ h1 {
   display: inline-flex;
   grid-column: 2 / 3;
   justify-self: center;
+}
+
+.center-deal > div {
+  align-items: center;
 }
 
 .user {
