@@ -207,7 +207,11 @@ function renderWar() {
   let warCardVal2 = parseInt(warCard2.replace(/(A)/, 14).replace(/(K)/, 13).replace(/(Q)/, 12).replace(/(J)/, 11).replace(/(c)|(d)|(h)|(s)/, ''))
   
   if (warCardVal1 === warCardVal2) {
-    doubleWar()
+    if (deck1.length === 0 || deck2.length === 0) {
+      checkWinner()
+    } else {
+      setTimeout(() => doublWar(), 2000)
+    }
   } else if (warCardVal1 > warCardVal2) {
     deck1WarWinner()
   } else if (warCardVal1 < warCardVal2) {
@@ -227,7 +231,7 @@ function doubleWar() {
 
   // user draws 1 card (face down) to deckDisplay1
   let drawnCard1 = deck1[0]
-  if (drawnCard1 === 'undefined') {
+  if (deck1.length === 0) {
     checkWinner()
   } else {
     deckDisplay1.unshift(drawnCard1)
@@ -237,7 +241,7 @@ function doubleWar() {
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
-  if (drawnCard2 === 'undefined') {
+  if (deck2.length === 0) {
     checkWinner()
   } else {
     deckDisplay2.unshift(drawnCard2)
@@ -265,7 +269,7 @@ function doubleWar() {
       warDeck2.push(deck2[i])
     }
   }
-  
+
   // removes war cards from deck1 and deck2
   deck1.splice(0, 3)
   deck2.splice(0, 3)
@@ -289,8 +293,8 @@ function deck1WarWinner() {
   }
   warDeck1El.classList.remove('back')
   warDeck2El.classList.remove('back')
-  warDeck1.splice(0,3)
-  warDeck2.splice(0,3)
+  warDeck1.splice(0,6)
+  warDeck2.splice(0,6)
 
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
