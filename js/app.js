@@ -58,10 +58,10 @@ function init() {
 }
 
 function computerDraw() {
-  // if (deck2.length === 1) {
-  //   deck2El.classList.remove('back')
-  // } else {
-  // }
+  if (deck2.length === 1) {
+    deck2El.classList.remove('back')
+  } else {
+  }
   // add first card in deck2 on deckDisplay2
   if (deckDisplay2.length === 0) {
     let drawnCard = deck2[0]
@@ -74,10 +74,10 @@ function computerDraw() {
 
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
-  // if (deck1.length === 1) {
-  //   deck1El.classList.remove('back')
-  // } else {
-  // }
+  if (deck1.length === 1) {
+    deck1El.classList.remove('back')
+  } else {
+  }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
   if (deckDisplay2.length === 1) {
     let drawnCard = deck1[0]
@@ -326,8 +326,8 @@ function deck2WarWinner() {
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
   } else {
-    setTimeout(() => returnCards(), 2000)
-    setTimeout(() => computerDraw(), 2000)
+    setTimeout(() => returnCards(), 3000)
+    setTimeout(() => computerDraw(), 4000)
   }
 }
 
