@@ -63,14 +63,15 @@ function init() {
   computerDraw()
 }
 
-function computerDraw() {
-  if (deck2.length < 2) {
-    deck2El.classList.remove('back')
-  } else {
-    deck2El.classList.add('back')
-  }
+function computerDraw() {  
+  // if (deck2.length < 2) {
+  //   deck2El.classList.remove('back')
+  // } else {
+  //   deck2El.classList.add('back')
+  // }
   // add first card in deck2 on deckDisplay2
-  if (deckDisplay2.length === 0 && deck1.length > 0) {
+  // if deck2 has at least 1 card and there are no cards drawn in deckDisplay2, then draw a card
+  if (deckDisplay2.length === 0 && deck2.length > 0) {
     let drawnCard = deck2[0]
     deckDisplay2.push(drawnCard)
     deck2DisplayEl.classList.add(drawnCard)
