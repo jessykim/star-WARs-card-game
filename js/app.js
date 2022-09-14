@@ -1,12 +1,10 @@
 /*-------------- Constants -------------------*/
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
-
-// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // for testing
 // const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-// const mainDeck = ["dA","cA","d10","c10"]
+const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -57,6 +55,7 @@ function init() {
 
   dealBtn.setAttribute('hidden', true)
   resetBtn.removeAttribute('hidden')
+  messageEl.textContent = ''
 
   console.log(deck1);
   console.log(deck2);
@@ -160,6 +159,8 @@ function returnCards() {
 
 // create a war function
 function war() { 
+  messageEl.textContent = 'We have WAR! Click on the card drawn for you at the center to see who wins!'
+
   deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
   deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
 
@@ -236,9 +237,11 @@ function war() {
 // compare card values
 // push center cards and cards in warDeck1 and warDeck2 into winning deck
 function renderWar() {
+  messageEl.textContent = ''
+
   // flip the two center drawn cards
-  deck1DisplayEl.classList.remove('back', 'background')
-  deck2DisplayEl.classList.remove('back', 'background')
+  deck1DisplayEl.classList.remove('back')
+  deck2DisplayEl.classList.remove('back')
 
   let warCard1 = deckDisplay1[0]
   let warCard2 = deckDisplay2[0]
@@ -267,6 +270,8 @@ function renderWar() {
 
 // create a function for doubleWar
 function doubleWar() {
+  messageEl.textContent = 'We have DOUBLE WAR! Click on the card drawn for you at the center to see who wins!'
+
   deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
   deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
 
