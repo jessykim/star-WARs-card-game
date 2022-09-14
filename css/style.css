@@ -46,3 +46,16 @@ h1 {
 .war-d-1 > div {
   margin: 5px;
 }
+
+.computer {
+}
+
+.computer > img {
+  max-width: 50px;
+  border-radius: 50%;
+}
+
+.user > img {
+  max-width: 50px;
+  border-radius: 50%;
+}
