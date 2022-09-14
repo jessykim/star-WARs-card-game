@@ -47,12 +47,12 @@ function init() {
     let randIdx = Math.floor(Math.random() * mainDeck.length)
     let cardPicked = mainDeck.splice(randIdx, 1)[0]
     deck1.push(cardPicked)
-    deck1El.classList.add('back')
+    deck1El.classList.add('back', 'background')
 
     let randIdx2 = Math.floor(Math.random() * mainDeck.length)
     let cardPicked2 = mainDeck.splice(randIdx2, 1)[0]
     deck2.push(cardPicked2)
-    deck2El.classList.add('back')
+    deck2El.classList.add('back', 'background')
   }
 
   dealBtn.setAttribute('hidden', true)
@@ -65,15 +65,15 @@ function init() {
 
 function computerDraw() {
   if (deck2.length < 2) {
-    deck2El.classList.remove('back')
+    deck2El.classList.remove('back', 'background')
   } else {
-    deck2El.classList.add('back')
+    deck2El.classList.add('back', 'background')
   }
   // add first card in deck2 on deckDisplay2
   if (deckDisplay2.length === 0 && deck1.length > 0) {
     let drawnCard = deck2[0]
     deckDisplay2.push(drawnCard)
-    deck2DisplayEl.classList.add(drawnCard)
+    deck2DisplayEl.classList.add(drawnCard, 'background')
     deck2.shift()
   } else {
   }
@@ -82,15 +82,15 @@ function computerDraw() {
 // create a function that draws the first card out of deck1 when the user clicks on deck1
 function handleClick() {
   if (deck1.length < 2) {
-    deck1El.classList.remove('back')
+    deck1El.classList.remove('back', 'background')
   } else {
-    deck1El.classList.add('back')
+    deck1El.classList.add('back', 'background')
   }
   // if deckDisplay2 has a card drawn, then allow user to click on deck1 to draw 1 card to the center
   if (deckDisplay2.length === 1 && deckDisplay1.length === 0) {
     let drawnCard = deck1[0]
     deckDisplay1.push(drawnCard)
-    deck1DisplayEl.classList.add(drawnCard)
+    deck1DisplayEl.classList.add(drawnCard, 'background')
     deck1.shift()
     render()
   } else {
@@ -134,15 +134,15 @@ function render() {
   }
 
   if (deck1.length === 0) {
-    deck1El.classList.remove('back')
+    deck1El.classList.remove('back', 'background')
   } else {
-    deck1El.classList.add('back')
+    deck1El.classList.add('back', 'background')
   }
 
   if (deck2.length === 0) {
-    deck2El.classList.remove('back')
+    deck2El.classList.remove('back', 'background')
   } else {
-    deck2El.classList.add('back')
+    deck2El.classList.add('back', 'background')
   }
 
   console.log(deck1);
@@ -151,8 +151,8 @@ function render() {
 
 // create a separate returnCards function
 function returnCards() {
-  deck1DisplayEl.classList.remove(deckDisplay1[0])
-  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
+  deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
   deckDisplay1.pop()
   deckDisplay2.pop()
   setTimeout(() => computerDraw(), 2000)
@@ -160,35 +160,35 @@ function returnCards() {
 
 // create a war function
 function war() { 
-  deck1DisplayEl.classList.remove(deckDisplay1[0])
-  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
+  deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
 
   // user draws 1 card (face down) to deckDisplay1
   let drawnCard1 = deck1[0]
   deckDisplay1.unshift(drawnCard1)
-  deck1DisplayEl.classList.add(drawnCard1, 'back')
+  deck1DisplayEl.classList.add(drawnCard1, 'back', 'background')
   deck1.shift()
   console.log(drawnCard1);
   console.log(deckDisplay1);
 
   if (deck1.length === 0) {
-    deck1El.classList.remove('back')
+    deck1El.classList.remove('back', 'background')
   } else {
-    deck1El.classList.add('back')
+    deck1El.classList.add('back', 'background')
   }
   
   // comp draws 1 card (face down) to deckDisplay2
   let drawnCard2 = deck2[0]
   deckDisplay2.unshift(drawnCard2)
-  deck2DisplayEl.classList.add(drawnCard2, 'back')
+  deck2DisplayEl.classList.add(drawnCard2, 'back', 'background')
   deck2.shift()
   console.log(drawnCard2);
   console.log(deckDisplay2);
 
   if (deck2.length === 0) {
-    deck2El.classList.remove('back')
+    deck2El.classList.remove('back', 'background')
   } else {
-    deck2El.classList.add('back')
+    deck2El.classList.add('back', 'background')
   }
   
   // draw up to 3 cards (may be less depending on if deck1 or deck2 only has a few or no cards left) to warDeck1 and warDeck2
@@ -215,13 +215,13 @@ function war() {
   // don't include back display if no cards in warDecks
   if (warDeck1.length > 0) {
     deck1.splice(0, 3)
-    warDeck1El.classList.add('back')
+    warDeck1El.classList.add('back', 'background')
   } else {
   }
   
   if (warDeck2.length > 0) {
     deck2.splice(0, 3)
-    warDeck2El.classList.add('back')
+    warDeck2El.classList.add('back', 'background')
   } else {
 
   }
@@ -237,8 +237,8 @@ function war() {
 // push center cards and cards in warDeck1 and warDeck2 into winning deck
 function renderWar() {
   // flip the two center drawn cards
-  deck1DisplayEl.classList.remove('back')
-  deck2DisplayEl.classList.remove('back')
+  deck1DisplayEl.classList.remove('back', 'background')
+  deck2DisplayEl.classList.remove('back', 'background')
 
   let warCard1 = deckDisplay1[0]
   let warCard2 = deckDisplay2[0]
@@ -267,8 +267,8 @@ function renderWar() {
 
 // create a function for doubleWar
 function doubleWar() {
-  deck1DisplayEl.classList.remove(deckDisplay1[0])
-  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
+  deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
 
   // user draws 1 card (face down) to deckDisplay1
   let drawnCard1 = deck1[0]
@@ -276,7 +276,7 @@ function doubleWar() {
     checkWinner()
   } else {
     deckDisplay1.unshift(drawnCard1)
-    deck1DisplayEl.classList.add(drawnCard1, 'back')
+    deck1DisplayEl.classList.add(drawnCard1, 'back', 'background')
     deck1.shift()
   }
   
@@ -286,7 +286,7 @@ function doubleWar() {
     checkWinner()
   } else {
     deckDisplay2.unshift(drawnCard2)
-    deck2DisplayEl.classList.add(drawnCard2, 'back')
+    deck2DisplayEl.classList.add(drawnCard2, 'back', 'background')
     deck2.shift()
   }
   
@@ -315,7 +315,7 @@ function doubleWar() {
   deck1.splice(0, 3)
   deck2.splice(0, 3)
   
-  setTimeout(() => renderWar(), 3000)
+  setTimeout(() => renderWar(), 2000)
 }
 
 function deck1WarWinner() {
@@ -332,16 +332,16 @@ function deck1WarWinner() {
   for (let i = 0; i < warDeck2.length; i++) {
     deck1.push(warDeck2[i])
   }
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
+  warDeck1El.classList.remove('back', 'background')
+  warDeck2El.classList.remove('back', 'background')
   warDeck1.splice(0,6)
   warDeck2.splice(0,6)
 
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
   } else {
-    setTimeout(() => returnCards(), 2000)
-    setTimeout(() => computerDraw(), 2000)
+    setTimeout(() => returnCards(), 1000)
+    setTimeout(() => computerDraw(), 1000)
   }
 }
 
@@ -359,16 +359,16 @@ function deck2WarWinner() {
   for (let i = 0; i < warDeck2.length; i++) {
     deck2.push(warDeck2[i])
   }
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
+  warDeck1El.classList.remove('back', 'background')
+  warDeck2El.classList.remove('back', 'background')
   warDeck1.splice(0,3)
   warDeck2.splice(0,3)
 
   if (deck1.length === 0 || deck2.length === 0) {
     checkWinner()
   } else {
-    setTimeout(() => returnCards(), 3000)
-    setTimeout(() => computerDraw(), 4000)
+    setTimeout(() => returnCards(), 1000)
+    setTimeout(() => computerDraw(), 1000)
   }
 }
 
@@ -378,18 +378,18 @@ function deck2WarWinner() {
 function checkWinner() {
   if (deck2.length === 0 && deck1.length > 0) {
     messageEl.textContent = "Congratulations! Yo-da winna!"
-    deck2El.classList.remove('back')
+    deck2El.classList.remove('back', 'background')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
   } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
-    deck1El.classList.remove('back')
+    deck1El.classList.remove('back', 'background')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
-    deck1El.classList.remove('back')
-    deck2El.classList.remove('back')
+    deck1El.classList.remove('back', 'background')
+    deck2El.classList.remove('back', 'background')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
   } else {
@@ -402,12 +402,12 @@ function checkWinner() {
 function reset() {
   dealBtn.removeAttribute('hidden')
   resetBtn.setAttribute('hidden', true)
-  deck1El.classList.remove('back')
-  deck2El.classList.remove('back')
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
-  deck1DisplayEl.classList.remove(deckDisplay1[0])
-  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deck1El.classList.remove('back', 'background')
+  deck2El.classList.remove('back', 'background')
+  warDeck1El.classList.remove('back', 'background')
+  warDeck2El.classList.remove('back', 'background')
+  deck1DisplayEl.classList.remove(deckDisplay1[0], 'background')
+  deck2DisplayEl.classList.remove(deckDisplay2[0], 'background')
   messageEl.textContent = "Click deal to start!"
   for (let i = 0; i < deck1.length; i++) {
     mainDeck.push(deck1[i])

@@ -47,9 +47,6 @@ h1 {
   margin: 5px;
 }
 
-.computer {
-}
-
 .computer > img {
   max-width: 50px;
   border-radius: 50%;
@@ -58,4 +55,9 @@ h1 {
 .user > img {
   max-width: 50px;
   border-radius: 50%;
+}
+
+.information > img {
+  max-height: 100px;
+  border-radius: 5%;
 }
