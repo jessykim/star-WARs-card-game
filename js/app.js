@@ -1,8 +1,8 @@
 /*-------------- Constants -------------------*/
-// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // for testing
-const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
+// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
 // const mainDeck = ["dA","cA","d10","c10"]
 
@@ -156,6 +156,15 @@ function returnCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
+  setTimeout(() => computerDraw(), 1000)
+}
+
+// only for after war
+function returnWarCards() {
+  deck1DisplayEl.classList.remove(deckDisplay1[0])
+  deck2DisplayEl.classList.remove(deckDisplay2[0])
+  deckDisplay1 = []
+  deckDisplay2 = []
   setTimeout(() => computerDraw(), 1000)
 }
 
@@ -339,18 +348,16 @@ function doubleWar() {
 
   // removes war cards from deck1 and deck2
   if (warDeck1.length > 0) {
-    deck1.splice(0, 3)
     warDeck1El.classList.add('back')
   } else {
   }
   
   if (warDeck2.length > 0) {
-    deck2.splice(0, 3)
     warDeck2El.classList.add('back')
   } else {
   }
-  // deck1.splice(0, 3)
-  // deck2.splice(0, 3)
+  deck1.splice(0, 3)
+  deck2.splice(0, 3)
   
   setTimeout(() => renderWar(), 2000)
 }
@@ -371,14 +378,14 @@ function deck1WarWinner() {
   }
   warDeck1El.classList.remove('back')
   warDeck2El.classList.remove('back')
-  // warDeck1.splice(0,6)
-  // warDeck2.splice(0,6)
+  warDeck1.splice(0,6)
+  warDeck2.splice(0,6)
 
   if (deck2.length === 0) {
     checkWinner()
   } else {
-    setTimeout(() => returnCards(), 1000)
-    setTimeout(() => computerDraw(), 1000)
+    setTimeout(() => returnWarCards(), 2000)
+    // setTimeout(() => computerDraw(), 2100)
   }
 }
 
@@ -398,14 +405,14 @@ function deck2WarWinner() {
   }
   warDeck1El.classList.remove('back')
   warDeck2El.classList.remove('back')
-  // warDeck1.splice(0,6)
-  // warDeck2.splice(0,6)
+  warDeck1.splice(0,6)
+  warDeck2.splice(0,6)
 
   if (deck1.length === 0) {
     checkWinner()
   } else {
-    setTimeout(() => returnCards(), 1000)
-    setTimeout(() => computerDraw(), 1000)
+    setTimeout(() => returnWarCards(), 2000)
+    // setTimeout(() => computerDraw(), 2100)
   }
 }
 
@@ -475,5 +482,7 @@ function reset() {
   // }
   warDeck1 = []
   warDeck2 = []
-  mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
+  mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
+  // mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
+  // mainDeck.push("dA","cA","d10","c10")
 }

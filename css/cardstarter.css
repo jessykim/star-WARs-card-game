@@ -337,7 +337,8 @@ background-color: white; }
 .card.clubs.r04,
 .card.c04,
 .card.♣04 {
-  background-image: url("../images/clubs/clubs-r04.svg"); }
+  background-image: url("../images/clubs/clubs-r04.svg");
+  background-color: white; }
 
 .card.clubs.r03,
 .card.c03,
