@@ -6,10 +6,8 @@ body {
   background-attachment: fixed;
   display: grid;
   min-width: 320px;
-
   grid-template-columns: [first] 30% [line2] 40% [line3] 30% [end];
   grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] 35% [last-line];
-
 }
 
 h1 {
@@ -20,16 +18,31 @@ h1 {
 
 .center-deal {
   grid-column: 2 / 3;
+  place-self: center;
 }
 
 .center-deal > div {
-  align-items: center;
+  margin: 0;
 }
 
 .user {
   grid-column: 1 / 2;
 }
 
-.war-deck {
-  place-self: center;
+.war-d-2 {
+  justify-self: center;
+  align-self: end;
+}
+
+.war-d-2 > div {
+  margin: 5px;
+}
+
+.war-d-1 {
+  align-self: start;
+  justify-self: center;
+}
+
+.war-d-1 > div {
+  margin: 5px;
 }
