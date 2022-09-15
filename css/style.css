@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 main {
@@ -16,6 +16,7 @@ main {
   grid-template-columns: [first] 30% [line2] 40% [line3] 30% [end];
   grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] auto [last-line];
   font-family: 'Nanum Gothic', sans-serif;
+  margin: auto 1px;
 }
 
 .card.small {
