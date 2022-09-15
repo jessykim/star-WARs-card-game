@@ -1,10 +1,10 @@
 /*-------------- Constants -------------------*/
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // for testing
 // const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-// const mainDeck = ["dA","cA","d10","c10"]
+const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -29,16 +29,22 @@ const favicon = document.getElementById('favicon')
 
 const warClick = new Audio('../audio/lightsaber.mp3')
 const winnerTheme = new Audio('../audio/star-wars-theme.mp3')
-const chewyRoar = new Audio('../audio/chewy.roar.mp3')
+const chewyRoar = new Audio('../audio/chewy_roar.mp3')
+
+const body = document.getElementById('body')
 
 /*----------- Event Listeners ----------------*/
 dealBtn.addEventListener('click', init)
-document.getElementById('deck-1').addEventListener('click', handleClick)
-document.getElementById('deck-1-display').addEventListener('click', renderWar)
-document.getElementById('reset-btn').addEventListener('click', reset)
+deck1El.addEventListener('click', handleClick)
+deck1DisplayEl.addEventListener('click', renderWar)
+resetBtn.addEventListener('click', reset)
+
 
 /*-------------- Functions -------------------*/
 function init() {
+  chewyRoar.volume = .10
+  chewyRoar.play()
+
   while (mainDeck.length > 0) {
     let randIdx = Math.floor(Math.random() * mainDeck.length)
     let cardPicked = mainDeck.splice(randIdx, 1)[0]
@@ -152,6 +158,10 @@ function war() {
   messageEl.textContent = "We have WAR! Click on the card drawn for you at the center to see who wins!"
   messageEl.classList.add('background')
 
+  body.style.backgroundImage = "url('./images/casey-horner-pXZxuXmpsNo-unsplash.jpg')"
+
+
+
   deck1DisplayEl.classList.remove(deckDisplay1[0])
   deck2DisplayEl.classList.remove(deckDisplay2[0])
 
@@ -218,6 +228,9 @@ function war() {
 }
 
 function renderWar() {
+  warClick.volume = .10
+  warClick.play()
+
   messageEl.textContent = ''
   messageEl.classList.remove('background')
 
@@ -370,6 +383,8 @@ function checkWinner() {
     deck2El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
+    winnerTheme.volume = .10
+    winnerTheme.play()
   } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
     messageEl.classList.add('background')
@@ -383,6 +398,8 @@ function checkWinner() {
     deck2El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
+    winnerTheme.volume = .10
+    winnerTheme.play()
   } else {
     setTimeout(() => returnCards(), 2000)
   }
@@ -405,8 +422,8 @@ function reset() {
   deckDisplay2 = []
   warDeck1 = []
   warDeck2 = []
-  mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
+  // mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
   // below is for testing/presenting
   // mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
-  // mainDeck.push("dA","cA","d10","c10")
+  mainDeck.push("dA","cA","d10","c10")
 }
