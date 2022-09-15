@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  margin: 5px;
+  margin: 50px auto;
 }
 
 main {
@@ -131,7 +131,7 @@ h1 {
   padding: 5px;
   max-height: 120px;
   border-radius: 10px;
-  justify-self: end;
+  justify-self: center;
   align-self: center;
   -webkit-box-shadow: inset 0px 0px 85px rgba(0,0,0,0.4);
 	-moz-box-shadow:    inset 0px 0px 85px rgba(0,0,0,0.4);
@@ -151,9 +151,8 @@ h1 {
 
 @media only screen and (min-width: 768px) {
   main {
-    min-width: 1200px;
+    min-width: 700px;
     max-height: 700px;
-    margin-top: 30px;
   }
 
   h1 {
@@ -172,16 +171,24 @@ h1 {
   }
 
   .information {
-    display: flex;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-  }
+  } 
 
-  .information > div {
-    font-size: 50px;
+  .information > #message {
+    justify-self: end;
+    align-self: start;
+    font-size: 18px;
   }
 
   .information > img {
     max-height: 200px;
   }
 
+}
+
+@media only screen and (min-width: 1024px) {
+  main {
+    min-width: 1200px;
+  }
 }
