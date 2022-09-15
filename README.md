@@ -14,7 +14,7 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 
 ## Planning Materials
 - Whimsical
-  - [Link](https://whimsical.com/war-card-game-PC6HNmG7g4ARFu5GctUNBG) to materials
+  - [Link](https://whimsical.com/war-card-game-PC6HNmG7g4ARFu5GctUNBG) to materials, such as my user story, pseudocode, and wireframes for the game
 
 ## Screenshots of the Game 📸 (TBD)
 
@@ -22,7 +22,8 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 - HTML
 - CSS
 - JavaScript
-- Git
+- GitHub
+- Visual Studio Code
 
 ## Credits
 - [Unsplash](https://unsplash.com/)
@@ -35,3 +36,4 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 - Include audio for dealing and flipping cards
 - Cards drawn on WAR are staggered so user can see how many cards are drawn
 - Allow user to pick their Star Wars character
+- Add progress bars for each player to indicate the amount of cards they have in their deck
