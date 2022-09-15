@@ -16,7 +16,12 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 - Whimsical
   - [Link](https://whimsical.com/war-card-game-PC6HNmG7g4ARFu5GctUNBG) to materials, such as the user story, pseudocode, and wireframes for the game
 
-## Screenshots of the Game 📸 (TBD)
+## Screenshots of the Game 📸
+![game at state](./images/game-state.png)
+
+![game during war](./images/war.png)
+
+![chewbacca's message](./images/chewy.png)
 
 ## Technology Used
 - HTML
