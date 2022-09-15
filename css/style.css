@@ -1,11 +1,18 @@
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url(/images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg);
   background-repeat: no-repeat ;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  /* margin: 0; */
+}
+
+main {
   display: grid;
-  min-width: 320px;
+  /* min-width: 320px; */
   height: 100vh;
   grid-template-columns: [first] 30% [line2] 40% [line3] 30% [end];
   grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] 35% [last-line];
@@ -140,7 +147,15 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) {
-  
+  main {
+    display: grid;
+    /* min-width: 320px; */
+    height: 100vh;
+    grid-template-columns: [first] 15% [line2] 25% [line3] 35% [line4] 25% [end];
+    grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] 35% [last-line];
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+
   h1 {
     font-size: 40px;
   }
@@ -167,5 +182,17 @@ h1 {
 
   .information > img {
     max-height: 200px;
+  }
+
+  .war-d-2 {
+    grid-column: 3 / 4;
+  }
+
+  .center-deal {
+    grid-column: 3 / 4;
+  }
+
+  .user {
+    grid-column: 2 / 3;
   }
 }

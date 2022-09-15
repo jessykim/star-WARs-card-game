@@ -1,7 +1,7 @@
-# [star] **WAR**[s]
+# [star] WAR[s]
 
 ## Background & Description
-Welcome to [star] WAR[s]! Though I would not consider myself the biggest Star Wars fan, I thought it would be fun to build a War card game with a Star WARs theme, get it? 
+Welcome to [star] **WAR**[s]! Though I would not consider myself the biggest Star Wars fan, I thought it would be fun to build a War card game with a Star WARs theme, get it? 
 
 War is a simple game that requires a deck of cards and is typically played by two people. The game starts with the deck dealt in half so each player has their own set of cards. Each player will draw one card at a time - without looking at their hand - and whichever card is higher (lowest: 2, highest: Ace) will collect both cards. This pattern continues on until a player runs out of cards.
 
@@ -33,4 +33,5 @@ If immediately after WAR, another set of drawn cards are the same, players will 
 ## Icebox Items 🧊
 - Add animation of sliding cards
 - Include audio for dealing and flipping cards
+- Cards drawn on WAR are staggered so user can see how many cards are drawn
 - Allow user to pick their Star Wars character
