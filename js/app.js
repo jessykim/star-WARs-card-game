@@ -229,12 +229,12 @@ function war() {
   // removes war cards from deck1 and deck2
   // don't include back display if no cards in warDecks
   if (warDeck1.length > 0) {
-    warDeck1El.classList.add('back')
+    warDeck1El.classList.add('back-red')
   } else {
   }
   
   if (warDeck2.length > 0) {
-    warDeck2El.classList.add('back')
+    warDeck2El.classList.add('back-red')
   } else {
   }
   deck1.splice(0, 3)
@@ -348,12 +348,12 @@ function doubleWar() {
 
   // removes war cards from deck1 and deck2
   if (warDeck1.length > 0) {
-    warDeck1El.classList.add('back')
+    warDeck1El.classList.add('back-red')
   } else {
   }
   
   if (warDeck2.length > 0) {
-    warDeck2El.classList.add('back')
+    warDeck2El.classList.add('back-red')
   } else {
   }
   deck1.splice(0, 3)
@@ -376,8 +376,8 @@ function deck1WarWinner() {
   for (let i = 0; i < warDeck2.length; i++) {
     deck1.push(warDeck2[i])
   }
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
+  warDeck1El.classList.remove('back-red')
+  warDeck2El.classList.remove('back-red')
   warDeck1.splice(0,6)
   warDeck2.splice(0,6)
 
@@ -403,8 +403,8 @@ function deck2WarWinner() {
   for (let i = 0; i < warDeck2.length; i++) {
     deck2.push(warDeck2[i])
   }
-  warDeck1El.classList.remove('back')
-  warDeck2El.classList.remove('back')
+  warDeck1El.classList.remove('back-red')
+  warDeck2El.classList.remove('back-red')
   warDeck1.splice(0,6)
   warDeck2.splice(0,6)
 
