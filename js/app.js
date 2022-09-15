@@ -33,7 +33,9 @@ document.getElementById('deck-1').addEventListener('click', handleClick)
 document.getElementById('deck-1-display').addEventListener('click', renderWar)
 document.getElementById('reset-btn').addEventListener('click', reset)
 
-const warClick = new Audio()
+const warClick = new Audio('../audio/lightsaber.mp3')
+const winnerTheme = new Audio('../audio/star-wars-theme.mp3')
+const chewyRoar = new Audio('../audio/chewy.roar.mp3')
 
 /*-------------- Functions -------------------*/
 

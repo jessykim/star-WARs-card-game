@@ -24,12 +24,14 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 - JavaScript
 - GitHub
 - Visual Studio Code
+- GuitarBand
 
 ## Credits
 - [Unsplash](https://unsplash.com/)
 - [ClipartMax](https://www.clipartmax.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [SEI-Remote Card Deck](https://github.com/SEI-Remote/css-card-deck.git)
+- [The Sound Archive](https://www.thesoundarchive.com/)
 
 ## Icebox Items 🧊
 - Add animation of sliding cards
