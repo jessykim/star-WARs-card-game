@@ -12,8 +12,8 @@ body {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-/* .card.small {
-  font-size: 12px; } */
+.card.small {
+  font-size: 12px; }
 
 h1 {
   font-size: 18px;
@@ -117,14 +117,15 @@ h1 {
 .information > #message {
   text-align: center;
   place-self: center;
+  font-size: 10px;
 }
 
 .information > img {
   padding: 5px;
-  max-height: 100px;
+  max-height: 120px;
   border-radius: 10px;
   justify-self: end;
-  align-self: end;
+  align-self: center;
 }
 
 #message {
@@ -148,8 +149,8 @@ h1 {
     font-size: 40px;
   }
 
-  /* .card.large {
-    font-size: 26px; } */
+  .card.large {
+    font-size: 26px; }
 
   .computer > img {
     max-width: 80px;

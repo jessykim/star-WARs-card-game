@@ -26,7 +26,7 @@ const deck2DisplayEl = document.getElementById('deck-2-display')
 const messageEl = document.getElementById('message')
 const dealBtn = document.getElementById('deal-btn')
 const resetBtn = document.getElementById('reset-btn')
-const favicon = document.querySelector('#favicon')
+const favicon = document.getElementById('favicon')
 
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
