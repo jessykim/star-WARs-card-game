@@ -6,6 +6,7 @@ body {
   background-attachment: fixed;
   display: grid;
   min-width: 320px;
+  height: 100vh;
   grid-template-columns: [first] 30% [line2] 40% [line3] 30% [end];
   grid-template-rows: [row1-start] 35% [row1-end] 30% [third-line] 35% [last-line];
   font-family: 'Nanum Gothic', sans-serif;
@@ -52,6 +53,15 @@ h1 {
 .war-d-1 > .buttons {
   justify-self: center;
   align-self: end;
+  border: none;
+}
+
+#deal-btn {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+#reset-btn {
+  font-family: 'Nanum Gothic', sans-serif;
 }
 
 .computer {

@@ -17,16 +17,16 @@ let deckDisplay2 = []
 
 
 /*---------- Cached Element References -------*/
-let deck1El = document.getElementById('deck-1')
-let deck2El = document.getElementById('deck-2')
-let warDeck1El = document.getElementById('war-deck-1')
-let warDeck2El = document.getElementById('war-deck-2')
-let deck1DisplayEl = document.getElementById('deck-1-display')
-let deck2DisplayEl = document.getElementById('deck-2-display')
-let messageEl = document.getElementById('message')
-let dealBtn = document.getElementById('deal-btn')
-let resetBtn = document.getElementById('reset-btn')
-
+const deck1El = document.getElementById('deck-1')
+const deck2El = document.getElementById('deck-2')
+const warDeck1El = document.getElementById('war-deck-1')
+const warDeck2El = document.getElementById('war-deck-2')
+const deck1DisplayEl = document.getElementById('deck-1-display')
+const deck2DisplayEl = document.getElementById('deck-2-display')
+const messageEl = document.getElementById('message')
+const dealBtn = document.getElementById('deal-btn')
+const resetBtn = document.getElementById('reset-btn')
+const favicon = document.querySelector('#favicon')
 
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
