@@ -12,16 +12,8 @@ body {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
-#war-img {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  height: 100vh;
-}
-
-.card.small {
-  font-size: 12px; }
+/* .card.small {
+  font-size: 12px; } */
 
 h1 {
   font-size: 18px;
@@ -156,8 +148,8 @@ h1 {
     font-size: 40px;
   }
 
-  .card.large {
-    font-size: 26px; }
+  /* .card.large {
+    font-size: 26px; } */
 
   .computer > img {
     max-width: 80px;
