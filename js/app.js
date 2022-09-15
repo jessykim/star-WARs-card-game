@@ -27,15 +27,16 @@ const dealBtn = document.getElementById('deal-btn')
 const resetBtn = document.getElementById('reset-btn')
 const favicon = document.getElementById('favicon')
 
+const warClick = new Audio('../audio/lightsaber.mp3')
+const winnerTheme = new Audio('../audio/star-wars-theme.mp3')
+const chewyRoar = new Audio('../audio/chewy.roar.mp3')
+
 /*----------- Event Listeners ----------------*/
 document.getElementById('deal-btn').addEventListener('click', init)
 document.getElementById('deck-1').addEventListener('click', handleClick)
 document.getElementById('deck-1-display').addEventListener('click', renderWar)
 document.getElementById('reset-btn').addEventListener('click', reset)
 
-const warClick = new Audio('../audio/lightsaber.mp3')
-const winnerTheme = new Audio('../audio/star-wars-theme.mp3')
-const chewyRoar = new Audio('../audio/chewy.roar.mp3')
 
 /*-------------- Functions -------------------*/
 

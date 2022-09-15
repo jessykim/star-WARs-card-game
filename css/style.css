@@ -19,11 +19,11 @@ main {
 }
 
 .card.small {
-  font-size: 15px; 
+  font-size: 17px; 
 }
 
 h1 {
-  font-size: 18px;
+  font-size: 25px;
   padding: 10px;
   margin: 0;
 }
@@ -76,6 +76,7 @@ h1 {
   border-radius: 10px;
   padding: 8px;
   color: black;
+  font-size: 15px;
 }
 
 #reset-btn {
@@ -85,6 +86,7 @@ h1 {
   border-radius: 10px;
   padding: 8px;
   color: black;
+  font-size: 15px;
 }
 
 .computer {
@@ -130,7 +132,7 @@ h1 {
 .information > #message {
   text-align: center; 
   place-self: center; 
-  font-size: 10px; 
+  font-size: 15px; 
   text-align: center;
   padding: 5px;
 }
