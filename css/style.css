@@ -30,6 +30,9 @@ h1 {
 .center-deal {
   grid-column: 2 / 3;
   place-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
 }
 
 .center-deal > div {
@@ -125,6 +128,7 @@ h1 {
   text-align: center;
   place-self: center;
   font-size: 10px;
+  color: black;
 }
 
 .information > img {
