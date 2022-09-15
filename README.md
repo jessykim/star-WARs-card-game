@@ -10,7 +10,7 @@ What happens if both players draw the same card? I'm glad you asked! When the ca
 If immediately after WAR, another set of drawn cards are the same, players will repeat what they had done for the first war. If players run out of cards to draw for war, they will simply draw as many as they can and reserve their last card for the draw - this means there's still hope! The game ends when a player wins the entire deck of cards.
 
 ## ♠️♦️ Ready to Play? ♥️♣️
-[Link](star-war-s-card-game.netlify.app) to play the game
+Link to play the game: https://star-war-s-card-game.netlify.app/
 
 ## Planning Materials
 - Whimsical
