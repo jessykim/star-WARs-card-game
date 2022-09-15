@@ -170,7 +170,7 @@ function returnWarCards() {
 
 // create a war function
 function war() { 
-  messageEl.textContent = 'We have WAR! Click on the card drawn for you at the center to see who wins!'
+  messageEl.textContent = "We have WAR! Click on the card drawn for you at the center to see who wins!"
   messageEl.classList.add('background')
 
   deck1DisplayEl.classList.remove(deckDisplay1[0])
@@ -286,7 +286,7 @@ function renderWar() {
 
 // create a function for doubleWar
 function doubleWar() {
-  messageEl.textContent = 'We have DOUBLE WAR! Click on the card drawn for you at the center to see who wins!'
+  messageEl.textContent = "We have DOUBLE WAR! No need to click, let's see who wins!"
   messageEl.classList.add('background')
 
   deck1DisplayEl.classList.remove(deckDisplay1[0])

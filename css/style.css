@@ -53,15 +53,22 @@ h1 {
 .war-d-1 > .buttons {
   justify-self: center;
   align-self: end;
-  border: none;
 }
 
 #deal-btn {
   font-family: 'Nanum Gothic', sans-serif;
+  background-color: rgba(255, 255, 255, 0.454);
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
 }
 
 #reset-btn {
   font-family: 'Nanum Gothic', sans-serif;
+  background-color: rgba(135, 187, 111, 0.606);
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
 }
 
 .computer {
@@ -99,15 +106,10 @@ h1 {
   background-color: rgba(255, 255, 255, 0.292);
 }
 
-.information {
-  display: grid;
-  place-self: center;
-}
-
 .information > img {
   padding: 5px;
-  max-height: 80px;
-  border-radius: 10%;
+  max-height: 100px;
+  border-radius: 10px;
   justify-self: end;
 }
 
@@ -126,7 +128,7 @@ h1 {
   body {
     height: 100%;
     max-width: 900px;
-  }
+  } 
   
   h1 {
     font-size: 40px;
