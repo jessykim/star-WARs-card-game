@@ -1,4 +1,4 @@
-# [star] WAR[s]
+# [star] **WAR**[s]
 
 ## Background & Description
 Welcome to [star] WAR[s]! Though I would not consider myself the biggest Star Wars fan, I thought it would be fun to build a War card game with a Star WARs theme, get it? 
@@ -31,3 +31,6 @@ If immediately after WAR, another set of drawn cards are the same, players will 
 - [SEI-Remote Card Deck](https://github.com/SEI-Remote/css-card-deck.git)
 
 ## Icebox Items 🧊
+- Add animation of sliding cards
+- Include audio for dealing and flipping cards
+- Allow user to pick their Star Wars character

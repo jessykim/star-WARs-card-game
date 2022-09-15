@@ -140,10 +140,6 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) {
-  body {
-    height: 100%;
-    max-width: 900px;
-  } 
   
   h1 {
     font-size: 40px;
@@ -158,5 +154,18 @@ h1 {
 
   .user > img {
     max-width: 80px;
+  }
+
+  .information {
+    display: flex;
+    align-items: center;
+  }
+
+  .information > div {
+    font-size: 50px;
+  }
+
+  .information > img {
+    max-height: 200px;
   }
 }
