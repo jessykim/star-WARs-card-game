@@ -2,9 +2,9 @@
 // const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // for testing
-// const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
+const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-const mainDeck = ["dA","cA","d10","c10"]
+// const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -30,8 +30,10 @@ const favicon = document.getElementById('favicon')
 const warClick = new Audio('../audio/lightsaber.mp3')
 const winnerTheme = new Audio('../audio/star-wars-theme.mp3')
 const chewyRoar = new Audio('../audio/chewy_roar.mp3')
+const imperialSong = new Audio('../audio/imperial-song.mp3')
 
 const body = document.getElementById('body')
+const h1 = document.getElementById('h1')
 
 /*----------- Event Listeners ----------------*/
 dealBtn.addEventListener('click', init)
@@ -61,6 +63,9 @@ function init() {
   resetBtn.removeAttribute('hidden')
   messageEl.textContent = ''
   messageEl.classList.remove('background')
+
+  console.log(deck1);
+  console.log(deck2);
 
   computerDraw()
 }
@@ -143,6 +148,8 @@ function returnCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1.pop()
   deckDisplay2.pop()
+  messageEl.textContent = ''
+  messageEl.classList.remove('background')
   setTimeout(() => computerDraw(), 1000)
 }
 
@@ -151,6 +158,8 @@ function returnWarCards() {
   deck2DisplayEl.classList.remove(deckDisplay2[0])
   deckDisplay1 = []
   deckDisplay2 = []
+  messageEl.textContent = ''
+  messageEl.classList.remove('background')
   setTimeout(() => computerDraw(), 1000)
 }
 
@@ -159,8 +168,10 @@ function war() {
   messageEl.classList.add('background')
 
   body.style.backgroundImage = "url('./images/casey-horner-pXZxuXmpsNo-unsplash.jpg')"
+  h1.style.color = "yellow"
 
-
+  imperialSong.volume = .10
+  imperialSong.play()
 
   deck1DisplayEl.classList.remove(deckDisplay1[0])
   deck2DisplayEl.classList.remove(deckDisplay2[0])
@@ -231,9 +242,6 @@ function renderWar() {
   warClick.volume = .10
   warClick.play()
 
-  messageEl.textContent = ''
-  messageEl.classList.remove('background')
-
   deck1DisplayEl.classList.remove('back')
   deck2DisplayEl.classList.remove('back')
 
@@ -251,9 +259,13 @@ function renderWar() {
       setTimeout(() => doubleWar(), 2000)
     }
   } else if (warCardVal1 > warCardVal2) {
+    messageEl.textContent = 'Good one!'
+    messageEl.classList.add('background')
     deck1WarWinner()
   } else if (warCardVal1 < warCardVal2) {
     deck2WarWinner()
+    messageEl.textContent = 'Ouch!'
+    messageEl.classList.add('background')
   } 
 
   console.log(warCard1);
@@ -325,6 +337,9 @@ function doubleWar() {
 }
 
 function deck1WarWinner() {
+  body.style.backgroundImage = "url('./images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg')"
+  h1.style.color = "black"
+
   for (let i = 0; i < deckDisplay1.length; i++) {
     deck1.push(deckDisplay1[i])
   }
@@ -351,6 +366,9 @@ function deck1WarWinner() {
 }
 
 function deck2WarWinner() {
+  body.style.backgroundImage = "url('./images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg')"
+  h1.style.color = "black"
+
   for (let i = 0; i < deckDisplay1.length; i++) {
     deck2.push(deckDisplay1[i])
   }
@@ -385,12 +403,18 @@ function checkWinner() {
     removeEventListener('click', renderWar)
     winnerTheme.volume = .10
     winnerTheme.play()
+    body.style.backgroundImage = "url('./images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg')"
+    h1.style.color = "black"
   } else if (deck1.length === 0 && deck2.length > 0) {
     messageEl.textContent = "Better luck next time! Click reset for a rematch!"
     messageEl.classList.add('background')
     deck1El.classList.remove('back')
     resetBtn.removeAttribute('hidden')
     removeEventListener('click', renderWar)
+    imperialSong.volume = .10
+    imperialSong.play()
+    body.style.backgroundImage = "url('./images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg')"
+    h1.style.color = "black"
   } else if (deck1.length === 0 && deck2.length === 0) {
     messageEl.textContent = "It's a tie! Click reset for a rematch!"
     messageEl.classList.add('background')
@@ -400,6 +424,8 @@ function checkWinner() {
     removeEventListener('click', renderWar)
     winnerTheme.volume = .10
     winnerTheme.play()
+    body.style.backgroundImage = "url('./images/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg')"
+    h1.style.color = "black"
   } else {
     setTimeout(() => returnCards(), 2000)
   }
@@ -424,6 +450,6 @@ function reset() {
   warDeck2 = []
   // mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
   // below is for testing/presenting
-  // mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
-  mainDeck.push("dA","cA","d10","c10")
+  mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
+  // mainDeck.push("dA","cA","d10","c10")
 }
