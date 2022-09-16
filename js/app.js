@@ -1,10 +1,10 @@
 /*-------------- Constants -------------------*/
-const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+// const mainDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 // for testing
 // const mainDeck = ["dA","cA","hA","sA","d10","c10","h10","s07","s02","h04"]
 
-// const mainDeck = ["dA","cA","d10","c10"]
+const mainDeck = ["dA","cA","d10","c10"]
 
 
 /*--------------- Variables ------------------*/
@@ -261,11 +261,11 @@ function renderWar() {
   } else if (warCardVal1 > warCardVal2) {
     messageEl.textContent = 'Good one!'
     messageEl.classList.add('background')
-    deck1WarWinner()
+    setTimeout(() => deck1WarWinner(), 2000)
   } else if (warCardVal1 < warCardVal2) {
-    deck2WarWinner()
     messageEl.textContent = 'Ouch!'
     messageEl.classList.add('background')
+    setTimeout(() => deck2WarWinner(), 2000)
   } 
 
   console.log(warCard1);
@@ -448,8 +448,8 @@ function reset() {
   deckDisplay2 = []
   warDeck1 = []
   warDeck2 = []
-  mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
+  // mainDeck.push("dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02")
   // below is for testing/presenting
   // mainDeck.push("dA","cA","hA","sA","d10","c10","h10","s07","s02","h04")
-  // mainDeck.push("dA","cA","d10","c10")
+  mainDeck.push("dA","cA","d10","c10")
 }
