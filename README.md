@@ -24,19 +24,18 @@ Link to play the game: https://star-war-s-card-game.netlify.app/
 ![chewbacca's message](./images/chewy.png)
 
 ## Technology Used
-- HTML
 - CSS
-- JavaScript
-- GitHub
-- Visual Studio Code
+- Git/GitHub
 - GuitarBand
+- HTML
+- JavaScript
 
 ## Credits
-- [Unsplash](https://unsplash.com/)
 - [ClipartMax](https://www.clipartmax.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [SEI-Remote Card Deck](https://github.com/SEI-Remote/css-card-deck.git)
 - [The Sound Archive](https://www.thesoundarchive.com/)
+- [Unsplash](https://unsplash.com/)
 
 ## Icebox Items 🧊
 - Add animation of sliding cards
