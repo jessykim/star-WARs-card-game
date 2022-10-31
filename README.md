@@ -1,5 +1,8 @@
 # [star] WAR[s]
 
+## ♠️♦️ Ready to Play? ♥️♣️
+Link to play the game: https://star-war-s-card-game.netlify.app/
+
 ## Background & Description
 Welcome to [star] **WAR**[s]! Though I would not consider myself the biggest Star Wars fan, I thought it would be fun to build a War card game with a Star WARs theme, get it? 
 
@@ -8,9 +11,6 @@ War is a simple game that requires a deck of cards and is typically played by tw
 What happens if both players draw the same card? I'm glad you asked! When the cards drawn are the same, players go to WAR. Each player draws three cards (faced down) in a separate pile and will draw their fourth card (facing up) at the center. Whichever card is higher will collect all the cards that were drawn by both players. 
 
 If immediately after WAR, another set of drawn cards are the same, players will repeat what they had done for the first war. If players run out of cards to draw for war, they will simply draw as many as they can and reserve their last card for the draw - this means there's still hope! The game ends when a player wins the entire deck of cards.
-
-## ♠️♦️ Ready to Play? ♥️♣️
-Link to play the game: https://star-war-s-card-game.netlify.app/
 
 ## Planning Materials
 - Whimsical
