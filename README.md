@@ -38,8 +38,8 @@ If immediately after WAR, another set of drawn cards are the same, players will 
 - [Unsplash](https://unsplash.com/)
 
 ## Icebox Items 🧊
-- Add animation of sliding cards
-- Include audio for dealing and flipping cards
-- Cards drawn on WAR are staggered so user can see how many cards are drawn
-- Allow user to pick their Star Wars character
-- Add progress bars for each player to indicate the amount of cards they have in their deck
+- [ ] Add animation of sliding cards
+- [ ] Include audio for dealing and flipping cards
+- [ ] Cards drawn on WAR are staggered so user can see how many cards are drawn
+- [ ] Allow user to pick their Star Wars character
+- [ ] Add progress bars for each player to indicate the amount of cards they have in their deck
